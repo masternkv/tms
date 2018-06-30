@@ -47,7 +47,8 @@ public class TestSuite {
 	
 	@Test
 	public void testFindById()
-	{String a="bill";
+	{
+		//String a="bill";
 		//User user=userDao.findBySSO(a);
 		
 	    //when(userDao.findBySSO(a)).thenReturn(user);
