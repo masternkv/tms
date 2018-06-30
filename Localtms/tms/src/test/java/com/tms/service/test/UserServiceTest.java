@@ -3,6 +3,7 @@ package com.tms.service.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -49,6 +50,14 @@ public class UserServiceTest {
 		when(userDao.findById(i)).thenReturn(user);
 		assertEquals(userServiceImpl.findById(user.getId()), user);
 	}
+	
+	@Test
+	public void testFindBySSO()
+	{
+	User user=users.get(0);
+	when(userDao.findBySSO(anyString())).thenReturn(user);
+	assertEquals(userServiceImpl.findBySso(user.getSsoId()), user);
+	}
 
 	public List<User> getUserList() {
 		User user1 = new User();
@@ -61,8 +70,6 @@ public class UserServiceTest {
 		user1.setState("Active");
 
 		users.add(user1);
-
-		// employees.add(e2);
 		return users;
 	}
 
