@@ -3,6 +3,7 @@ package com.tms.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,9 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class LoginController {
+	
+	public static final Logger logger=Logger.getLogger(LoginController.class);
 
 	 @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	    public String homePage(ModelMap model) {
+		 //System.out.print("in controller");
+		logger.info("In controller class");
+		    
 	        model.addAttribute("greeting", "Hi, Welcome to mysite");
 	        return "welcome";
 	    }
