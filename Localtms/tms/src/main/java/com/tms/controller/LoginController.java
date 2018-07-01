@@ -20,7 +20,6 @@ public class LoginController {
 
 	 @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	    public String homePage(ModelMap model) {
-		 //System.out.print("in controller");
 		logger.info("In controller class");
 		    
 	        model.addAttribute("greeting", "Hi, Welcome to mysite");
