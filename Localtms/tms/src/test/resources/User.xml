@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <APP_USER id="1" NAME="SAMY" JOINING_DATE="2014-04-16"       SALARY="20000"  SSN="11111" />
-    <APP_USER id="2" NAME="TOMY" JOINING_DATE="2014-05-17"       SALARY="23000"  SSN="11112" />
+    <APP_USER SSO_ID="1" NAME="SAMY" PASSWORD="123"       FIRST_NAME="NIR"  LAST_NAME="VERMA"  EMAIL="NN" STATE="ACTIVE"/>
 </dataset>
