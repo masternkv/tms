@@ -3,7 +3,6 @@ package com.tms.test.dao;
 
 import javax.sql.DataSource;
 
-import org.apache.log4j.Logger;
 import org.dbunit.database.DatabaseDataSourceConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
@@ -14,13 +13,11 @@ import org.springframework.test.context.testng.AbstractTransactionalTestNGSpring
 import org.testng.annotations.BeforeMethod;
 
 import com.test.config.HibernateTestConfig;
-import com.tms.controller.LoginController;
 
 
 @ContextConfiguration(classes = { HibernateTestConfig.class })
 public abstract class EntityDaoImplTest extends AbstractTransactionalTestNGSpringContextTests {
 
-	public static final Logger logger=Logger.getLogger(EntityDaoImplTest.class);
 	
    @Autowired
    DataSource dataSource;
