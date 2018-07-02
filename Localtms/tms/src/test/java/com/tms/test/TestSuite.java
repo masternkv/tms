@@ -25,10 +25,11 @@ import com.tms.model.User;
 import com.tms.service.CustomUserDetailsService;
 import com.tms.service.UserService;
 import com.tms.service.UserServiceImpl;
-import com.tms.service.test.UserServiceTest;
+import com.tms.test.dao.UserDaoImplTest;
+import com.tms.test.service.UserServiceTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({UserServiceTest.class}
+@SuiteClasses({UserServiceTest.class,UserDaoImplTest.class}
 )
 public class TestSuite {
 	

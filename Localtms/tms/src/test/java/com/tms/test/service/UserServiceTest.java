@@ -1,4 +1,4 @@
-package com.tms.service.test;
+package com.tms.test.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
