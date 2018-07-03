@@ -1,4 +1,4 @@
-package com.tms.test.dao;
+/*package com.tms.test.dao;
 
 
 import javax.sql.DataSource;
@@ -33,3 +33,4 @@ public abstract class EntityDaoImplTest extends AbstractTransactionalTestNGSprin
    protected abstract IDataSet getDataSet() throws Exception;
 
 }
+*/

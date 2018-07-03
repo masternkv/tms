@@ -1,4 +1,4 @@
-package com.tms.test.dao;
+/*package com.tms.test.dao;
 import java.util.List;
 
 import org.dbunit.dataset.IDataSet;
@@ -40,3 +40,4 @@ public class UserDaoImplTest extends EntityDaoImplTest {
 		}
 
 }
+*/

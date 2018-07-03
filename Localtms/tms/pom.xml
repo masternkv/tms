@@ -176,10 +176,24 @@
         <artifactId>slf4j-api</artifactId>
         <version>1.7.10</version>
     </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-test</artifactId>
+    <version>4.0.1.RELEASE</version>
+    <scope>test</scope>
+</dependency>
+    
 
 	</dependencies>
 
 	<build>
+	<testResources>
+                <testResource>
+                    <directory>src/test/resources</directory>
+                </testResource>
+    </testResources>
 		<finalName>tms</finalName>
 		<!-- Updated for the latest version of JAVA -->
 		<plugins>
