@@ -1,7 +1,9 @@
 package com.tms.dao;
 
-import com.tms.model.User;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.tms.model.User;
+@Transactional
 public interface UserDao {
 	public User findById(int id);
     

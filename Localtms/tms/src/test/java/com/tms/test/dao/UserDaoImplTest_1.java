@@ -1,5 +1,8 @@
 package com.tms.test.dao;
 
+import javax.sql.DataSource;
+
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 //import org.joda.time.LocalDate;
@@ -9,9 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.testng.Assert;
 
-
-
-
 import com.test.config.HibernateTestConfig;
 import com.tms.dao.UserDao;
 import com.tms.model.User;
@@ -19,19 +19,21 @@ import com.tms.model.User;
 @RunWith(SpringJUnit4ClassRunner.class)
 //@ContextConfiguration(locations ="classpath:/applicationContextTest.xml")
 @ContextConfiguration(classes =HibernateTestConfig.class)
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(defaultRollback = true,transactionManager="txManager")
 public class UserDaoImplTest_1 {
 
 	@Autowired
 	UserDao userDao;
+	
 
 	@Test
 	public void testFindById() {
-		Assert.assertNotNull(userDao.findById(100));
-		//Assert.assertNull(userDao.findById(3));
+		System.out.print("Now in test");
+		Assert.assertNotNull(userDao.findById(1));
+		Assert.assertNull(userDao.findById(1));
 	}
 
-	/*public User getUserList() {
+	public User getUserList() {
 		User user1 = new User();
 		user1.setId(100);
 		user1.setSsoId("bill");
@@ -42,5 +44,5 @@ public class UserDaoImplTest_1 {
 		user1.setState("Active");
 		return user1;
 	}
-*/
+
 }

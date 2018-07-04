@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.tms.dao" })
+@ComponentScan({ "com.tms" })
 public class HibernateTestConfig {
 	
 	@Autowired
@@ -27,7 +27,7 @@ public class HibernateTestConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.tms.dao" });
+        sessionFactory.setPackagesToScan(new String[] { "com.tms" });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -36,16 +36,20 @@ public class HibernateTestConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
-        dataSource.setUsername("sa");
-        dataSource.setPassword("");
+        //dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+       dataSource.setUrl("jdbc:h2:mem:test2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
+       // dataSource.setUrl("jdbc:mysql://localhost:3306/tms?zeroDateTimeBehavior=convertToNull");
+        dataSource.setUsername("root");
+        dataSource.setPassword("root");
         return dataSource;
     }
  
     private Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        properties.put("hibernate.hbm2ddl.auto", "create-drop");
+       //properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.import_files","tms_app_user.sql");
         return properties;
     }
  

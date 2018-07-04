@@ -1,4 +1,4 @@
-/*package com.tms.test.dao;
+package com.tms.test.dao;
 
 
 import javax.sql.DataSource;
@@ -22,15 +22,14 @@ public abstract class EntityDaoImplTest extends AbstractTransactionalTestNGSprin
    @Autowired
    DataSource dataSource;
 
-   @BeforeMethod
+   /*@BeforeMethod
    public void setUp() throws Exception {
 	   logger.info("In abstract class");
        IDatabaseConnection dbConn = new DatabaseDataSourceConnection(
                dataSource);
        DatabaseOperation.CLEAN_INSERT.execute(dbConn, getDataSet());
-   }
+   }*/
     
-   protected abstract IDataSet getDataSet() throws Exception;
+  /* protected abstract IDataSet getDataSet() throws Exception;*/
 
 }
-*/
