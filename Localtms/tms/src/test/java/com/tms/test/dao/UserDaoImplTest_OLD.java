@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import com.tms.dao.UserDao;
 import com.tms.model.User;
 
-public class UserDaoImplTest extends EntityDaoImplTest {
+public class UserDaoImplTest_OLD extends EntityDaoImplTest {
 
 	@Autowired
 	

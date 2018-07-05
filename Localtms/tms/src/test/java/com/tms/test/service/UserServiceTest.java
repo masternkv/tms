@@ -24,6 +24,7 @@ public class UserServiceTest {
 
 	@Mock
 	UserDao userDao;
+	
 	@InjectMocks
 	UserServiceImpl userServiceImpl;
 	@Spy

@@ -18,33 +18,30 @@ USE `test_tms`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `app_user`
+-- Table structure for table `app_user_user_profile`
 --
 
-DROP TABLE IF EXISTS `app_user`;
+DROP TABLE IF EXISTS `app_user_user_profile`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `app_user` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `sso_id` varchar(30) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `state` varchar(30) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `sso_id` (`sso_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+CREATE TABLE `app_user_user_profile` (
+  `user_id` bigint(20) NOT NULL,
+  `user_profile_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`user_id`,`user_profile_id`),
+  KEY `FK_USER_PROFILE` (`user_profile_id`),
+  CONSTRAINT `FK_APP_USER` FOREIGN KEY (`user_id`) REFERENCES `app_user` (`id`),
+  CONSTRAINT `FK_USER_PROFILE` FOREIGN KEY (`user_profile_id`) REFERENCES `user_profile` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `app_user`
+-- Dumping data for table `app_user_user_profile`
 --
 
-LOCK TABLES `app_user` WRITE;
-/*!40000 ALTER TABLE `app_user` DISABLE KEYS */;
-INSERT INTO `app_user` VALUES (1,'bill','abc123','Bill','Watcher','bill@xyz.com','Active'),(2,'danny','abc124','Danny','Theys','danny@xyz.com','Active'),(3,'sam','abc125','Sam','Smith','samy@xyz.com','Active'),(4,'nicole','abc126','Nicole','warner','nicloe@xyz.com','Active'),(5,'kenny','abc127','Kenny','Roger','kenny@xyz.com','Active');
-/*!40000 ALTER TABLE `app_user` ENABLE KEYS */;
+LOCK TABLES `app_user_user_profile` WRITE;
+/*!40000 ALTER TABLE `app_user_user_profile` DISABLE KEYS */;
+INSERT INTO `app_user_user_profile` VALUES (1,1),(2,1),(3,2),(5,2),(4,3),(5,3);
+/*!40000 ALTER TABLE `app_user_user_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

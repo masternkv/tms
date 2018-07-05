@@ -35,10 +35,10 @@ public class HibernateTestConfig {
     @Bean(name = "dataSource")
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.h2.Driver");
-        //dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-       dataSource.setUrl("jdbc:h2:mem:test2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
-       // dataSource.setUrl("jdbc:mysql://localhost:3306/tms?zeroDateTimeBehavior=convertToNull");
+       // dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+       //dataSource.setUrl("jdbc:h2:mem:test2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
+       dataSource.setUrl("jdbc:mysql://localhost:3306/tms?zeroDateTimeBehavior=convertToNull");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
         return dataSource;
@@ -46,10 +46,11 @@ public class HibernateTestConfig {
  
     private Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-       //properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        properties.put("hibernate.hbm2ddl.auto", "create");
-        properties.put("hibernate.hbm2ddl.import_files","tms_app_user.sql");
+       //properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+       properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+       properties.put("hibernate.show_sql", "true");
+       //properties.put("hibernate.hbm2ddl.auto", "create-drop");
+       //properties.put("hibernate.hbm2ddl.import_files","tms_app_user.sql,tms_user_profile.sql,tms_app_user_user_profile.sql");
         return properties;
     }
  

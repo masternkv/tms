@@ -20,18 +20,33 @@ import com.tms.model.User;
 //@ContextConfiguration(locations ="classpath:/applicationContextTest.xml")
 @ContextConfiguration(classes =HibernateTestConfig.class)
 @TransactionConfiguration(defaultRollback = true,transactionManager="txManager")
-public class UserDaoImplTest_1 {
+public class UserDaoImplTesT {
 
 	@Autowired
 	UserDao userDao;
 	
+	
 
 	@Test
 	public void testFindById() {
-		System.out.print("Now in test");
-		Assert.assertNotNull(userDao.findById(1));
-		Assert.assertNull(userDao.findById(1));
+		
+		System.out.print("In Test");
+		
+		Assert.assertNotNull(userDao.findById(2));
+		Assert.assertNull(userDao.findById(100));
 	}
+	
+	// for this test case you have to set all the primary and foreign 
+	//key in db2 becuase criteria api searches for all relationship
+	
+	@Test
+	public void testFindBySSO() {
+		String s="danny";
+		Object obj=userDao.findBySSO(s);
+		Assert.assertNotNull(obj);
+		Assert.assertNull(userDao.findBySSO("nir"));
+	}
+	
 
 	public User getUserList() {
 		User user1 = new User();

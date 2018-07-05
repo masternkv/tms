@@ -1,3 +1,4 @@
+
 package com.tms.dao;
 
 import org.hibernate.Criteria;
@@ -13,11 +14,6 @@ import com.tms.model.User;
 public class UserDaoImpl implements  UserDao {
 	@Autowired
 	 SessionFactory sessionFactory;
-	    public void setSessionFactory(SessionFactory sf)
-	    {
-	        this.sessionFactory=sf;
-	    }
-	
 	public User findById(int id)
 	{
 		Session session = this.sessionFactory.getCurrentSession();
@@ -25,6 +21,7 @@ public class UserDaoImpl implements  UserDao {
 	}
 	 public  User findBySSO(String sso)
 	 {
+		 
 		 Session session = this.sessionFactory.getCurrentSession();
 		 Criteria crit = session.createCriteria(User.class);
 	        crit.add(Restrictions.eq("ssoId", sso));
