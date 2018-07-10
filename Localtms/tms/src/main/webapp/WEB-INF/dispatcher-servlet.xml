@@ -27,6 +27,6 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
         </property>
     </bean>
     
-<mvc:resources mapping="/static/css/**" location="//static/css/"
+<mvc:resources mapping="/static/**" location="//static/"
 	cache-period="31556926"/>
 </beans>

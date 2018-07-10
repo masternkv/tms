@@ -22,8 +22,9 @@ public class LoginController {
 	    public String homePage(ModelMap model) {
 		logger.info("In controller class");
 		    
-	        model.addAttribute("greeting", "Hi, Welcome to mysite");
-	        return "welcome";
+	        /*model.addAttribute("greeting", "Hi, Welcome to mysite");
+	        return "welcome";*/
+		return "studentRegist";
 	    }
 	 
 	    @RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -44,7 +45,7 @@ public class LoginController {
 	        return "accessDenied";
 	    }
 	 
-	    @RequestMapping(value = "/login", method = RequestMethod.GET)
+	    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
 	    public String loginPage() {
 	        return "login";
 	    }
