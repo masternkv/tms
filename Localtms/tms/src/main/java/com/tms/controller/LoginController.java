@@ -22,9 +22,9 @@ public class LoginController {
 	    public String homePage(ModelMap model) {
 		logger.info("In controller class");
 		    
-	        /*model.addAttribute("greeting", "Hi, Welcome to mysite");
-	        return "welcome";*/
-		return "studentRegist";
+	        model.addAttribute("greeting", "Hi, Welcome to mysite");
+	        return "welcome";
+		/*return "studentRegist";*/
 	    }
 	 
 	    @RequestMapping(value = "/admin", method = RequestMethod.GET)

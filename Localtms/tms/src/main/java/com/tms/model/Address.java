@@ -1,5 +1,112 @@
 package com.tms.model;
 
-public class Address {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="address_details")
+public class Address  implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="address_id")
+	private int addressId;
+	@Column(name="address_lane1")
+	private String addressLane1;
+	@Column(name="address_lane2")
+	private String addressLan2;
+	@Column(name="address_city")
+	private String addressCity;
+	@Column(name="address_state")
+	private String addressState;
+	@Column(name="address_zip")
+	private int addressZip;
+	@Column(name="address_country")
+	private String addressCountry;
+	@Column(name="address_phoneno")
+	private String addressPhoneNo;
+	@Column(name="address_mobno")
+	private String addressMobNo;
+	@Column(name="address_email")
+	private String addreesEmail;
+	@ManyToOne
+	private School schoolDetails;
+	public int getAddressId() {
+		return addressId;
+	}
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
+	}
+	public String getAddressLane1() {
+		return addressLane1;
+	}
+	public void setAddressLane1(String addressLane1) {
+		this.addressLane1 = addressLane1;
+	}
+	public String getAddressLan2() {
+		return addressLan2;
+	}
+	public void setAddressLan2(String addressLan2) {
+		this.addressLan2 = addressLan2;
+	}
+	public String getAddressCity() {
+		return addressCity;
+	}
+	public void setAddressCity(String addressCity) {
+		this.addressCity = addressCity;
+	}
+	public String getAddressState() {
+		return addressState;
+	}
+	public void setAddressState(String addressState) {
+		this.addressState = addressState;
+	}
+	public int getAddressZip() {
+		return addressZip;
+	}
+	public void setAddressZip(int addressZip) {
+		this.addressZip = addressZip;
+	}
+	public String getAddressCountry() {
+		return addressCountry;
+	}
+	public void setAddressCountry(String addressCountry) {
+		this.addressCountry = addressCountry;
+	}
+	public String getAddressPhoneNo() {
+		return addressPhoneNo;
+	}
+	public void setAddressPhoneNo(String addressPhoneNo) {
+		this.addressPhoneNo = addressPhoneNo;
+	}
+	public String getAddressMobNo() {
+		return addressMobNo;
+	}
+	public void setAddressMobNo(String addressMobNo) {
+		this.addressMobNo = addressMobNo;
+	}
+	public String getAddreesEmail() {
+		return addreesEmail;
+	}
+	public void setAddreesEmail(String addreesEmail) {
+		this.addreesEmail = addreesEmail;
+	}
+	public School getSchoolDetails() {
+		return schoolDetails;
+	}
+	public void setSchoolDetails(School schoolDetails) {
+		this.schoolDetails = schoolDetails;
+	}
+	
+	
 
 }

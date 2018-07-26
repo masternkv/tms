@@ -20,7 +20,7 @@
         <form:form method="POST" action="${addAction}">
       <table>
        <tr>
-           <td><form:label path="company_Name">Company_Name":</form:label></td>
+           <td><form:label path="company_Name">School Id":</form:label></td>
            <td><form:input path="Company_Name" value="${Company.company_Name}"/></td>
        </tr>
        <tr>
