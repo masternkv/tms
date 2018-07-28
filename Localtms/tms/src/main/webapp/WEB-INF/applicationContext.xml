@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,7 +19,7 @@
 <context:component-scan base-package="com.tms"></context:component-scan>
 <tx:annotation-driven transaction-manager="transactionManager"/>
 <mvc:annotation-driven></mvc:annotation-driven>
-    
+   <context:annotation-config /> 
     <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
         destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -39,6 +38,8 @@
             <list>
                 <value>com.tms.model.User</value>
                 <value>com.tms.model.UserProfile</value>
+                <value>com.tms.model.Address</value>
+                <value>com.tms.model.School</value>
             </list>
         </property>
         <property name="hibernateProperties">

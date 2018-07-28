@@ -2,11 +2,13 @@ package com.tms.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,7 +25,7 @@ public class Address  implements Serializable{
 	@Column(name="address_lane1")
 	private String addressLane1;
 	@Column(name="address_lane2")
-	private String addressLan2;
+	private String addressLane2;
 	@Column(name="address_city")
 	private String addressCity;
 	@Column(name="address_state")
@@ -39,6 +41,7 @@ public class Address  implements Serializable{
 	@Column(name="address_email")
 	private String addreesEmail;
 	@ManyToOne
+	@JoinColumn(name="school_id")
 	private School schoolDetails;
 	public int getAddressId() {
 		return addressId;
@@ -52,11 +55,12 @@ public class Address  implements Serializable{
 	public void setAddressLane1(String addressLane1) {
 		this.addressLane1 = addressLane1;
 	}
-	public String getAddressLan2() {
-		return addressLan2;
+	
+	public String getAddressLane2() {
+		return addressLane2;
 	}
-	public void setAddressLan2(String addressLan2) {
-		this.addressLan2 = addressLan2;
+	public void setAddressLane2(String addressLane2) {
+		this.addressLane2 = addressLane2;
 	}
 	public String getAddressCity() {
 		return addressCity;
@@ -106,7 +110,12 @@ public class Address  implements Serializable{
 	public void setSchoolDetails(School schoolDetails) {
 		this.schoolDetails = schoolDetails;
 	}
-	
-	
+	@Override
+	public String  toString()
+	{
+		return "addressDetail is:"+addressId+":"+addressLane1+":"+addressLane2
+				+":"+addressCity+":"+addressState+":"+"addressZip"+":"+addressCountry
+				+":"+addressPhoneNo+":"+addressMobNo+":"+addreesEmail+":"+schoolDetails.getSchoolId();
+	}
 
 }

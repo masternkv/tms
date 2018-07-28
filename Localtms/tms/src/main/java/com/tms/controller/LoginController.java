@@ -10,8 +10,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.tms.model.Address;
+
+
 
 @Controller
 public class LoginController {
@@ -20,10 +25,10 @@ public class LoginController {
 
 	 @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	    public String homePage(ModelMap model) {
-		logger.info("In controller class");
+		logger.info("In Login controller class");
 		    
 	        model.addAttribute("greeting", "Hi, Welcome to mysite");
-	        return "welcome";
+	       return "welcome";
 		/*return "studentRegist";*/
 	    }
 	 

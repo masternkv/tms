@@ -14,5 +14,23 @@ public class School {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="school_id")
 	private int schoolId;
-    //@Column(name="school_")
+    @Column(name="school_name")
+    private String schoolName;
+	public int getSchoolId() {
+		return schoolId;
+	}
+	public void setSchoolId(int schoolId) {
+		this.schoolId = schoolId;
+	}
+	public String getSchoolName() {
+		return schoolName;
+	}
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
+@Override
+public String toString()
+{
+	return "Return vlaue is from school object"+schoolId+""+schoolName;
+}
 }
