@@ -40,6 +40,7 @@ public class Address  implements Serializable{
 	private String addressMobNo;
 	@Column(name="address_email")
 	private String addreesEmail;
+	private String addressSchoolId;
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School schoolDetails;
@@ -48,6 +49,13 @@ public class Address  implements Serializable{
 	}
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
+	}
+	
+	public String getAddressSchoolId() {
+		return addressSchoolId;
+	}
+	public void setAddressSchoolId(String addressSchoolId) {
+		this.addressSchoolId = addressSchoolId;
 	}
 	public String getAddressLane1() {
 		return addressLane1;

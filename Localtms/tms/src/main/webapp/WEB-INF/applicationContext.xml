@@ -18,8 +18,7 @@
 <context:property-placeholder location="/WEB-INF/config/jdbc.properties" />
 <context:component-scan base-package="com.tms"></context:component-scan>
 <tx:annotation-driven transaction-manager="transactionManager"/>
-<mvc:annotation-driven></mvc:annotation-driven>
-   <context:annotation-config /> 
+<mvc:annotation-driven></mvc:annotation-driven> 
     <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
         destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />

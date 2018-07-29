@@ -31,6 +31,6 @@ public class School {
 @Override
 public String toString()
 {
-	return "Return vlaue is from school object"+schoolId+""+schoolName;
+	return schoolId+":"+schoolName;
 }
 }
