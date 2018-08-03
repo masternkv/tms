@@ -14,9 +14,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <style type="text/css">
+               .error {
+	           color: red;
+                    }
+        </style>
     </head>
-    <body>
-        <h1>Hello World!</h1>
         <c:url var="addAction" value="/saveSchAddr" ></c:url>
         <form:form method="POST" action="${addAction}" modelAttribute="address">
       <table>
@@ -36,10 +39,7 @@
       <tr>
            <td><form:label path="addressLane1">Address Lane1:</form:label></td>
            <td><form:input path="addressLane1"/></td>
-       </tr>
-       <tr>
-           <td><form:label path="addressLane1">Address Lane1:</form:label></td>
-           <td><form:input path="addressLane1"/></td>
+           <td><form:errors path="addressLane1" cssClass="error" /></td>
        </tr>
        <tr>
            <td><form:label path="addressLane2">Address Lane2:</form:label></td>
@@ -79,18 +79,6 @@
          <td><input type="submit" value="SAVE"/></td>
          </tr>
    </table> 
-   
-   <%-- <table align="center" border="1">
-  <tr>
-   <th>School Id</th>
-   <th>School Name Name</th>
-  </tr>
-
-  <c:forEach items="${schoolList}" var="comp_mst">
-   <tr>
-    <td><c:out value="${comp_mst.schoolId}"/></td>
-  </c:forEach>
- </table> --%>
   </form:form>
     </body>
 </html>

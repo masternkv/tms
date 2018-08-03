@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="address_details")
@@ -31,7 +32,7 @@ public class Address  implements Serializable{
 	@Column(name="address_state")
 	private String addressState;
 	@Column(name="address_zip")
-	private int addressZip;
+	private Integer addressZip;
 	@Column(name="address_country")
 	private String addressCountry;
 	@Column(name="address_phoneno")
@@ -40,7 +41,8 @@ public class Address  implements Serializable{
 	private String addressMobNo;
 	@Column(name="address_email")
 	private String addreesEmail;
-	private String addressSchoolId;
+	@Transient
+   private String addressSchoolId;
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School schoolDetails;
@@ -82,10 +84,11 @@ public class Address  implements Serializable{
 	public void setAddressState(String addressState) {
 		this.addressState = addressState;
 	}
-	public int getAddressZip() {
+	
+	public Integer getAddressZip() {
 		return addressZip;
 	}
-	public void setAddressZip(int addressZip) {
+	public void setAddressZip(Integer addressZip) {
 		this.addressZip = addressZip;
 	}
 	public String getAddressCountry() {
