@@ -28,13 +28,13 @@ public class Address  implements Serializable{
 	@Column(name="address_lane2")
 	private String addressLane2;
 	@Column(name="address_city")
-	private String addressCity;
+	private Integer addressCity;
 	@Column(name="address_state")
-	private String addressState;
+	private Integer addressState;
 	@Column(name="address_zip")
 	private Integer addressZip;
 	@Column(name="address_country")
-	private String addressCountry;
+	private Integer addressCountry;
 	@Column(name="address_phoneno")
 	private String addressPhoneNo;
 	@Column(name="address_mobno")
@@ -46,81 +46,103 @@ public class Address  implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School schoolDetails;
+	
 	public int getAddressId() {
 		return addressId;
 	}
+
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
-	
-	public String getAddressSchoolId() {
-		return addressSchoolId;
-	}
-	public void setAddressSchoolId(String addressSchoolId) {
-		this.addressSchoolId = addressSchoolId;
-	}
+
 	public String getAddressLane1() {
 		return addressLane1;
 	}
+
 	public void setAddressLane1(String addressLane1) {
 		this.addressLane1 = addressLane1;
 	}
-	
+
 	public String getAddressLane2() {
 		return addressLane2;
 	}
+
 	public void setAddressLane2(String addressLane2) {
 		this.addressLane2 = addressLane2;
 	}
-	public String getAddressCity() {
+
+	public Integer getAddressCity() {
 		return addressCity;
 	}
-	public void setAddressCity(String addressCity) {
+
+	public void setAddressCity(Integer addressCity) {
 		this.addressCity = addressCity;
 	}
-	public String getAddressState() {
+
+	public Integer getAddressState() {
 		return addressState;
 	}
-	public void setAddressState(String addressState) {
+
+	public void setAddressState(Integer addressState) {
 		this.addressState = addressState;
 	}
-	
+
 	public Integer getAddressZip() {
 		return addressZip;
 	}
+
 	public void setAddressZip(Integer addressZip) {
 		this.addressZip = addressZip;
 	}
-	public String getAddressCountry() {
+
+	public Integer getAddressCountry() {
 		return addressCountry;
 	}
-	public void setAddressCountry(String addressCountry) {
+
+	public void setAddressCountry(Integer addressCountry) {
 		this.addressCountry = addressCountry;
 	}
+
 	public String getAddressPhoneNo() {
 		return addressPhoneNo;
 	}
+
 	public void setAddressPhoneNo(String addressPhoneNo) {
 		this.addressPhoneNo = addressPhoneNo;
 	}
+
 	public String getAddressMobNo() {
 		return addressMobNo;
 	}
+
 	public void setAddressMobNo(String addressMobNo) {
 		this.addressMobNo = addressMobNo;
 	}
+
 	public String getAddreesEmail() {
 		return addreesEmail;
 	}
+
 	public void setAddreesEmail(String addreesEmail) {
 		this.addreesEmail = addreesEmail;
 	}
+
+	public String getAddressSchoolId() {
+		return addressSchoolId;
+	}
+
+	public void setAddressSchoolId(String addressSchoolId) {
+		this.addressSchoolId = addressSchoolId;
+	}
+
 	public School getSchoolDetails() {
 		return schoolDetails;
 	}
+
 	public void setSchoolDetails(School schoolDetails) {
 		this.schoolDetails = schoolDetails;
 	}
+
 	@Override
 	public String  toString()
 	{
