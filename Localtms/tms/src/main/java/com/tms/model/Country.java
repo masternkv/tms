@@ -16,6 +16,18 @@ public class Country implements Serializable {
 	private Integer countryId;
 	@Column(name="country_name")
 	private String counrtyName;
+	public Integer getCountryId() {
+		return countryId;
+	}
+	public void setCountryId(Integer countryId) {
+		this.countryId = countryId;
+	}
+	public String getCounrtyName() {
+		return counrtyName;
+	}
+	public void setCounrtyName(String counrtyName) {
+		this.counrtyName = counrtyName;
+	}
 	
 
 }

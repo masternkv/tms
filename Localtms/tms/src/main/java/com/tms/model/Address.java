@@ -33,8 +33,6 @@ public class Address  implements Serializable{
 	private Integer addressState;
 	@Column(name="address_zip")
 	private Integer addressZip;
-	@Column(name="address_country")
-	private Integer addressCountry;
 	@Column(name="address_phoneno")
 	private String addressPhoneNo;
 	@Column(name="address_mobno")
@@ -42,112 +40,140 @@ public class Address  implements Serializable{
 	@Column(name="address_email")
 	private String addreesEmail;
 	@Transient
-   private String addressSchoolId;
+    private String addressSchoolId;
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School schoolDetails;
+	@ManyToOne
+	@JoinColumn(name="address_country")
+	private Country countryDetails;
 	
+
 	public int getAddressId() {
 		return addressId;
 	}
+
 
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
 
+
 	public String getAddressLane1() {
 		return addressLane1;
 	}
+
 
 	public void setAddressLane1(String addressLane1) {
 		this.addressLane1 = addressLane1;
 	}
 
+
 	public String getAddressLane2() {
 		return addressLane2;
 	}
+
 
 	public void setAddressLane2(String addressLane2) {
 		this.addressLane2 = addressLane2;
 	}
 
+
 	public Integer getAddressCity() {
 		return addressCity;
 	}
+
 
 	public void setAddressCity(Integer addressCity) {
 		this.addressCity = addressCity;
 	}
 
+
 	public Integer getAddressState() {
 		return addressState;
 	}
+
 
 	public void setAddressState(Integer addressState) {
 		this.addressState = addressState;
 	}
 
+
 	public Integer getAddressZip() {
 		return addressZip;
 	}
+
 
 	public void setAddressZip(Integer addressZip) {
 		this.addressZip = addressZip;
 	}
 
-	public Integer getAddressCountry() {
-		return addressCountry;
-	}
-
-	public void setAddressCountry(Integer addressCountry) {
-		this.addressCountry = addressCountry;
-	}
 
 	public String getAddressPhoneNo() {
 		return addressPhoneNo;
 	}
 
+
 	public void setAddressPhoneNo(String addressPhoneNo) {
 		this.addressPhoneNo = addressPhoneNo;
 	}
+
 
 	public String getAddressMobNo() {
 		return addressMobNo;
 	}
 
+
 	public void setAddressMobNo(String addressMobNo) {
 		this.addressMobNo = addressMobNo;
 	}
+
 
 	public String getAddreesEmail() {
 		return addreesEmail;
 	}
 
+
 	public void setAddreesEmail(String addreesEmail) {
 		this.addreesEmail = addreesEmail;
 	}
+
 
 	public String getAddressSchoolId() {
 		return addressSchoolId;
 	}
 
+
 	public void setAddressSchoolId(String addressSchoolId) {
 		this.addressSchoolId = addressSchoolId;
 	}
+
 
 	public School getSchoolDetails() {
 		return schoolDetails;
 	}
 
+
 	public void setSchoolDetails(School schoolDetails) {
 		this.schoolDetails = schoolDetails;
 	}
+
+
+	public Country getCountryDetails() {
+		return countryDetails;
+	}
+
+
+	public void setCountryDetails(Country countryDetails) {
+		this.countryDetails = countryDetails;
+	}
+
 
 	@Override
 	public String  toString()
 	{
 		return "addressDetail is:"+addressId+":"+addressLane1+":"+addressLane2
-				+":"+addressCity+":"+addressState+":"+"addressZip"+":"+addressCountry
+				+":"+addressCity+":"+addressState+":"+"addressZip"+":"+countryDetails.getCountryId()
 				+":"+addressPhoneNo+":"+addressMobNo+":"+addreesEmail+":"+schoolDetails.getSchoolId();
 	}
 

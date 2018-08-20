@@ -6,19 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tms.dao.SchoolDao;
-import com.tms.model.School;
-
+import com.tms.dao.CountryDao;
+import com.tms.model.Country;
 @Service
-public class SchoolServiceImpl implements SchoolService{
-	
-    @Autowired
-    SchoolDao schoolDao;
+public class CountryServiceImpl implements CountryService {
+
+	@Autowired
+    CountryDao countryDao;
 	@Override
 	@Transactional
-	public List<School> getAllSchool() {
-	
-		return schoolDao.getAllSchool();
+	public List<Country> getAllCountry() {
+		
+		return countryDao.getAllCountry();
 	}
 
 }
