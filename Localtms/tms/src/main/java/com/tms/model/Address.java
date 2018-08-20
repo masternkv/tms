@@ -41,6 +41,8 @@ public class Address  implements Serializable{
 	private String addreesEmail;
 	@Transient
     private String addressSchoolId;
+	@Transient
+    private String addressCountryName;
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School schoolDetails;
@@ -166,6 +168,16 @@ public class Address  implements Serializable{
 
 	public void setCountryDetails(Country countryDetails) {
 		this.countryDetails = countryDetails;
+	}
+
+
+	public String getAddressCountryName() {
+		return addressCountryName;
+	}
+
+
+	public void setAddressCountryName(String addressCountryName) {
+		this.addressCountryName = addressCountryName;
 	}
 
 

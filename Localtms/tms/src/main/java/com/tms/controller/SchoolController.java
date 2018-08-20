@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tms.model.Address;
+import com.tms.model.Country;
 import com.tms.model.School;
 import com.tms.service.AddressService;
+import com.tms.service.CountryService;
 import com.tms.service.SchoolService;
 import com.tms.validator.AddressValidator;
 
@@ -31,6 +33,8 @@ public class SchoolController {
 	private SchoolService schoolService;
 	@Autowired
 	private AddressValidator addressValidator;
+	@Autowired
+	private CountryService countryService;
 	/*@InitBinder
 	protected void initBinder(WebDataBinder binder)
 	{
@@ -46,7 +50,10 @@ public class SchoolController {
 		logger.info("In Display Address url");
 		List<School> schoolList=schoolService.getAllSchool();
 		logger.info("School Detail"+schoolList.toString());
-	    model.addObject("schoolList",schoolList);
+		List<Country> countryList=countryService.getAllCountry();
+		logger.info("Country Detail"+countryList.toString());
+		model.addObject("countrylList",countryList);
+		model.addObject("schoolList",schoolList); 
 	    model.setViewName("addAddress");
 		return model;
 	}

@@ -1,4 +1,5 @@
 
+
 <%-- 
     Document   : addCompany
     Created on : Feb 16, 2017, 7:55:36 AM
@@ -59,8 +60,13 @@
           <td><form:input path="addressZip"/></td>
        </tr>
        <tr>
-          <td><form:label path="addressCountry">Country:</form:label></td>
-          <td><form:input path="addressCountry"/></td>
+           <td>Country:</td>
+           <td>
+           <form:select path="addressCountryName">
+           <form:option value="NONE" label="---Select---"></form:option>
+           <form:options items="${countryList}"/>
+           </form:select>
+           </td>
        </tr>
         <tr>
           <td><form:label path="addressPhoneNo">Phone Number:</form:label></td>
