@@ -42,7 +42,7 @@ public class Address  implements Serializable{
 	@Transient
     private String addressSchoolId;
 	@Transient
-    private String addressCountryName;
+    private Integer addressCountryId;
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	private School schoolDetails;
@@ -170,14 +170,13 @@ public class Address  implements Serializable{
 		this.countryDetails = countryDetails;
 	}
 
-
-	public String getAddressCountryName() {
-		return addressCountryName;
+	public Integer getAddressCountryId() {
+		return addressCountryId;
 	}
 
 
-	public void setAddressCountryName(String addressCountryName) {
-		this.addressCountryName = addressCountryName;
+	public void setAddressCountryId(Integer addressCountryId) {
+		this.addressCountryId = addressCountryId;
 	}
 
 

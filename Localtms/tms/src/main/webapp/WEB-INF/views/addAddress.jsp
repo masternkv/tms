@@ -62,9 +62,9 @@
        <tr>
            <td>Country:</td>
            <td>
-           <form:select path="addressCountryName">
+           <form:select path="addressCountryId">
            <form:option value="NONE" label="---Select---"></form:option>
-           <form:options items="${countryList}"/>
+           <form:options items="${countryList}" itemValue="countryId" itemLabel="counrtyName" />
            </form:select>
            </td>
        </tr>

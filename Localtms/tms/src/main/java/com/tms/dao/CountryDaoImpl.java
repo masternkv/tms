@@ -20,7 +20,7 @@ public class CountryDaoImpl implements CountryDao{
 	@Override
 	public List<Country> getAllCountry() {
 		Criteria getAllCrit=sessionFactory.getCurrentSession().createCriteria(Country.class);
-		getAllCrit.setProjection(Projections.property("countryId"));
+		//getAllCrit.setProjection(Projections.property("counrtyName"));
 		//@SuppressWarnings("unchecked")
 		List<Country> getAllCountry=getAllCrit.list();
 	    return getAllCountry;

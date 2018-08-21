@@ -52,7 +52,7 @@ public class SchoolController {
 		logger.info("School Detail"+schoolList.toString());
 		List<Country> countryList=countryService.getAllCountry();
 		logger.info("Country Detail"+countryList.toString());
-		model.addObject("countrylList",countryList);
+		model.addObject("countryList",countryList);
 		model.addObject("schoolList",schoolList); 
 	    model.setViewName("addAddress");
 		return model;
@@ -72,9 +72,12 @@ public class SchoolController {
     	{
     		int getSchoolid=Integer.parseInt(addr.getAddressSchoolId());
         	School sch=new School();
+        	Country coun=new Country();
             sch.setSchoolId(getSchoolid);
+            coun.setCountryId(addr.getAddressCountryId());
         
              addr.setSchoolDetails(sch);
+             addr.setCountryDetails(coun);
         	
         	addrService.saveAddress(addr);
          return new ModelAndView("redirect:displayAddress");
