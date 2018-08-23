@@ -27,10 +27,10 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
         </property>
     </bean>
     
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basename" value="/WEB-INF/conf/messages" />
-   </bean>
-	
+    <bean class="org.springframework.context.support.ResourceBundleMessageSource"
+		id="messageSource">
+		<property name="basename" value="message"/>
+	</bean>
     
 <mvc:resources mapping="/static/**" location="//static/"
 	cache-period="31556926"/>

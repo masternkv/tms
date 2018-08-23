@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name="address_details")
 public class Address  implements Serializable{
@@ -24,6 +26,7 @@ public class Address  implements Serializable{
 	@Column(name="address_id")
 	private int addressId;
 	@Column(name="address_lane1")
+	@NotEmpty
 	private String addressLane1;
 	@Column(name="address_lane2")
 	private String addressLane2;
@@ -40,6 +43,7 @@ public class Address  implements Serializable{
 	@Column(name="address_email")
 	private String addreesEmail;
 	@Transient
+	
     private Integer addressSchoolId;
 	@Transient
     private Integer addressCountryId;

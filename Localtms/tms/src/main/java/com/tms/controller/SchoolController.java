@@ -2,6 +2,8 @@ package com.tms.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -52,9 +54,9 @@ public class SchoolController {
 		return model;
 	}
     @RequestMapping(value="/saveSchAddr",method = RequestMethod.POST)  
-    public ModelAndView saveSchoolAddress(ModelAndView model,@ModelAttribute("address") Address addr,BindingResult result )
+    public ModelAndView saveSchoolAddress(ModelAndView model,@Valid @ModelAttribute("address") Address addr,BindingResult result )
     {   
-    	addressValidator.validate(addr, result);
+    	//addressValidator.validate(addr, result);
     	if(result.hasErrors())
     	{
     		List<School> schoolList=schoolService.getAllSchool();
