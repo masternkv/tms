@@ -40,7 +40,7 @@ public class Address  implements Serializable{
 	@Column(name="address_email")
 	private String addreesEmail;
 	@Transient
-    private String addressSchoolId;
+    private Integer addressSchoolId;
 	@Transient
     private Integer addressCountryId;
 	@ManyToOne
@@ -140,17 +140,6 @@ public class Address  implements Serializable{
 		this.addreesEmail = addreesEmail;
 	}
 
-
-	public String getAddressSchoolId() {
-		return addressSchoolId;
-	}
-
-
-	public void setAddressSchoolId(String addressSchoolId) {
-		this.addressSchoolId = addressSchoolId;
-	}
-
-
 	public School getSchoolDetails() {
 		return schoolDetails;
 	}
@@ -177,6 +166,16 @@ public class Address  implements Serializable{
 
 	public void setAddressCountryId(Integer addressCountryId) {
 		this.addressCountryId = addressCountryId;
+	}
+
+
+	public Integer getAddressSchoolId() {
+		return addressSchoolId;
+	}
+
+
+	public void setAddressSchoolId(Integer addressSchoolId) {
+		this.addressSchoolId = addressSchoolId;
 	}
 
 

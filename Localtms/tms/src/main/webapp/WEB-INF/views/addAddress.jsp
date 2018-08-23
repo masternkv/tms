@@ -32,6 +32,7 @@
       <form:options items="${schoolList}"/>
       </form:select>
       </td>
+      <td><form:errors path="addressSchoolId" cssClass="error" /></td>
       </tr>
      <%--  <tr>
           <td><form:label path="">company_Id:</form:label></td>

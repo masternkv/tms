@@ -24,7 +24,17 @@ public class AddressValidator implements Validator {
 	@Override
 	public void validate(Object obj, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "addressLane1", "Address.error.addressLane1", "Enter Address Lane 1");
+		
 		Address addr=(Address)obj;
+		try
+		{
+		  Integer getSchoolId=addr.getAddressSchoolId();
+		}
+		catch(NumberFormatException ex)
+		{
+			errors.reject("Address.error.addressSchoolId", "Please");
+		}
+		
 		
 	}
 	

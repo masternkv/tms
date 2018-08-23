@@ -35,13 +35,7 @@ public class SchoolController {
 	private AddressValidator addressValidator;
 	@Autowired
 	private CountryService countryService;
-	/*@InitBinder
-	protected void initBinder(WebDataBinder binder)
-	{
-		logger.info("Binding Validator");
-		binder.addValidators(addressValidator);
-	}*/
-	
+
 	
 	@RequestMapping(value="/displayAddress")
 	public ModelAndView displayAddress(ModelAndView model,@ModelAttribute("address")Address addr)
@@ -70,10 +64,10 @@ public class SchoolController {
     	}
     	else
     	{
-    		int getSchoolid=Integer.parseInt(addr.getAddressSchoolId());
         	School sch=new School();
         	Country coun=new Country();
-            sch.setSchoolId(getSchoolid);
+        	
+            sch.setSchoolId(addr.getAddressSchoolId());
             coun.setCountryId(addr.getAddressCountryId());
         
              addr.setSchoolDetails(sch);
