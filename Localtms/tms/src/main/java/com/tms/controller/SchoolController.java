@@ -54,7 +54,7 @@ public class SchoolController {
 		return model;
 	}
     @RequestMapping(value="/saveSchAddr",method = RequestMethod.POST)  
-    public ModelAndView saveSchoolAddress(ModelAndView model,@Valid @ModelAttribute("address") Address addr,BindingResult result )
+    public ModelAndView saveSchoolAddress(ModelAndView model, @ModelAttribute("address") @Valid Address address,BindingResult result )
     {   
     	//addressValidator.validate(addr, result);
     	if(result.hasErrors())
@@ -69,13 +69,13 @@ public class SchoolController {
         	School sch=new School();
         	Country coun=new Country();
         	
-            sch.setSchoolId(addr.getAddressSchoolId());
-            coun.setCountryId(addr.getAddressCountryId());
+            sch.setSchoolId(address.getAddressSchoolId());
+            coun.setCountryId(address.getAddressCountryId());
         
-             addr.setSchoolDetails(sch);
-             addr.setCountryDetails(coun);
+            address.setSchoolDetails(sch);
+            address.setCountryDetails(coun);
         	
-        	addrService.saveAddress(addr);
+        	addrService.saveAddress(address);
          return new ModelAndView("redirect:displayAddress");
     	}
     	
