@@ -28,7 +28,7 @@
       <td>School Id:</td>
       <td>
       <form:select path="addressSchoolId">
-      <form:option value="NONE" label="---Select---"></form:option>
+      <form:option value="-1" label="---Select---"></form:option>
       <form:options items="${schoolList}"/>
       </form:select>
       </td>
@@ -47,7 +47,15 @@
            <td><form:label path="addressLane2">Address Lane2:</form:label></td>
            <td><form:input path="addressLane2"/></td>
        </tr>
-       
+        <tr>
+           <td>Country:</td>
+           <td>
+           <form:select path="addressCountryId">
+           <form:option value="-1" label="---Select---"></form:option>
+           <form:options items="${countryList}" itemValue="countryId" itemLabel="counrtyName" />
+           </form:select>
+           </td>           <td><form:errors path="addressCountryId" cssClass="error" /></td>
+       </tr>
        <tr>
           <td><form:label path="addressCity">City:</form:label></td>
            <td><form:input path="addressCity"/></td>
@@ -59,15 +67,6 @@
         <tr>
           <td><form:label path="addressZip">Zip:</form:label></td>
           <td><form:input path="addressZip"/></td>
-       </tr>
-       <tr>
-           <td>Country:</td>
-           <td>
-           <form:select path="addressCountryId">
-           <form:option value="NONE" label="---Select---"></form:option>
-           <form:options items="${countryList}" itemValue="countryId" itemLabel="counrtyName" />
-           </form:select>
-           </td>
        </tr>
         <tr>
           <td><form:label path="addressPhoneNo">Phone Number:</form:label></td>

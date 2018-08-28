@@ -12,7 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -24,7 +29,7 @@ public class Address  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="address_id")
-	private int addressId;
+	private Integer addressId;
 	@Column(name="address_lane1")
 	@NotEmpty
 	private String addressLane1;
@@ -43,9 +48,10 @@ public class Address  implements Serializable{
 	@Column(name="address_email")
 	private String addreesEmail;
 	@Transient
-	
+	@Min(value=1)
     private Integer addressSchoolId;
 	@Transient
+	@Min(value=1)
     private Integer addressCountryId;
 	@ManyToOne
 	@JoinColumn(name="school_id")
@@ -55,12 +61,12 @@ public class Address  implements Serializable{
 	private Country countryDetails;
 	
 
-	public int getAddressId() {
+	public Integer getAddressId() {
 		return addressId;
 	}
 
 
-	public void setAddressId(int addressId) {
+	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
 
