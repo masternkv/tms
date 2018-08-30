@@ -20,6 +20,11 @@
 	           color: red;
                     }
         </style>
+        <link href="<c:url value='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'/>" rel="stylesheet"></link>
+        <script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>" type="text/javascript"></script>
+        <script src="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>" type="text/javascript"></script>
+         <script src="<c:url value="/static/js/test.js"/>" type="text/javascript"></script>
+        
     </head>
         <c:url var="addAction" value="/saveSchAddr" ></c:url>
         <form:form method="POST" action="${addAction}" modelAttribute="address">
@@ -27,7 +32,7 @@
       <tr>
       <td>School Id:</td>
       <td>
-      <form:select path="addressSchoolId">
+      <form:select path="addressSchoolId" id="dropDownSchoolId">
       <form:option value="-1" label="---Select---"></form:option>
       <form:options items="${schoolList}"/>
       </form:select>
@@ -85,6 +90,29 @@
          <td><input type="submit" value="SAVE"/></td>
          </tr>
    </table> 
+   <!-- <div id="result"></div>
+   <script type="text/javascript">
+    function crunchifyAjax() {
+        $.ajax({
+        	type: "GET",
+            url : '/getCountry',
+            success : function(data) {
+                $('#result').html(data);
+            }
+        });
+    }
+</script -->>
+<script>
+
+</script>
+
+<div class="col-sm-7" style="margin:20px 0px 20px 0px">
+		<button id="getAllCustomerId" type="button" class="btn btn-primary">Get All Customers</button>
+		<div id="getResultDiv" style="padding:20px 10px 20px 50px">
+	        <ul class="list-group">
+	    	</ul>
+    	</div>
+	</div>
   </form:form>
     </body>
 </html>
