@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
 			url : "/tms/getCountry",
 			success: function(countryList){
 				$('#getResultDiv').html(countryList);
+				display(countryList);
 				console.log("SUCCESS: ", countryList);
 				
 			},
@@ -23,4 +24,12 @@ jQuery(document).ready(function($) {
 			}
 		});	
 	}
-})
+});
+
+
+function display(countryList) {
+	var json = "<h4>Ajax Response</h4><pre>"
+			+ JSON.stringify(countryList, null, 1) + "</pre>";
+	$('#feedback').text(countryList[1].countryId);
+	//$('#feedback').html(json);
+}
