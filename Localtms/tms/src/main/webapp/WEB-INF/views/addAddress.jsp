@@ -36,11 +36,11 @@
 	<table>
 		<tr>
 			<td>School Id:</td>
-			<td><form:select path="addressSchoolId" id="dropDownSchoolId">
+			<td><form:select path="schoolDetails.schoolId" id="dropDownSchoolId">
 					<form:option value="-1" label="---Select---"></form:option>
 					<form:options items="${schoolList}" />
 				</form:select></td>
-			<td><form:errors path="addressSchoolId" cssClass="error" /></td>
+			<td><form:errors path="schoolDetails" cssClass="error" /></td>
 		</tr>
 		<%--  <tr>
           <td><form:label path="">company_Id:</form:label></td>
@@ -57,13 +57,13 @@
 		</tr>
 		<tr>
 			<td>Country:</td>
-			<td><form:select path="addressCountryId">
+			<td><form:select path="countryDetails.countryId" id="country">
 					<option value="-1" label="---Select---"></option>
 					<option value="1" label="India"></option>
 					<%-- <form:options items="${countryList}" itemValue="countryId"
 						itemLabel="counrtyName" /> --%>
 				</form:select></td>
-			<td><form:errors path="addressCountryId" cssClass="error" /></td>
+			<td><form:errors path="countryDetails" cssClass="error" /></td>
 		</tr>
 		<tr>
 			<td><form:label path="addressCity">City:</form:label></td>

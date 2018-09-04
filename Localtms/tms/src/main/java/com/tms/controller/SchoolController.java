@@ -55,7 +55,7 @@ public class SchoolController {
 		return model;
 	}
     @RequestMapping(value="/saveSchAddr",method = RequestMethod.POST)  
-    public ModelAndView saveSchoolAddress(ModelAndView model, @ModelAttribute("address") @Valid Address address,BindingResult result )
+    public ModelAndView saveSchoolAddress(ModelAndView model, @ModelAttribute("address") @Valid Address address,@Valid Country coun,BindingResult result )
     {   
     	//addressValidator.validate(addr, result);
     	if(result.hasErrors())
@@ -67,32 +67,21 @@ public class SchoolController {
     	}
     	else
     	{
-        	School sch=new School();
-        	Country coun=new Country();
         	
-            sch.setSchoolId(address.getAddressSchoolId());
-            coun.setCountryId(address.getAddressCountryId());
+        	//Country coun=new Country();
+        	
+            //sch.setSchoolId(address.getAddressSchoolId());
+            //coun.setCountryId(address.getAddressCountryId());
         
-            address.setSchoolDetails(sch);
-            address.setCountryDetails(coun);
-        	
+            //address.setSchoolDetails(sch);
+            //address.setCountryDetails(coun);
+        	logger.info("School Details while saving value in database"+address.getSchoolDetails().getSchoolId().toString());
         	addrService.saveAddress(address);
          return new ModelAndView("redirect:displayAddress");
     	}
     	
     }
     
-    @RequestMapping(value="/getCountry",method=RequestMethod.GET)
-	public @ResponseBody List<Country> getAllCountry()
-	{
-		
-		logger.info("In Display Address url");
-		List<School> schoolList=schoolService.getAllSchool();
-		logger.info("School Detail"+schoolList.toString());
-		List<Country> countryList=countryService.getAllCountry();
-		
-		return countryList;
-	}
     
     
 }

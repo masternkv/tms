@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -19,6 +20,8 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import com.tms.validator.IsValidSchool;
 
 @Entity
 @Table(name="address_details")
@@ -47,14 +50,15 @@ public class Address  implements Serializable{
 	private String addressMobNo;
 	@Column(name="address_email")
 	private String addreesEmail;
-	@Transient
+	/*@Transient
 	@Min(value=1)
-    private Integer addressSchoolId;
-	@Transient
+    private Integer addressSchoolId;*/
+	/*@Transient
 	@Min(value=1)
-    private Integer addressCountryId;
+    private Integer addressCountryId;*/
 	@ManyToOne
 	@JoinColumn(name="school_id")
+	@IsValidSchool
 	private School schoolDetails;
 	@ManyToOne
 	@JoinColumn(name="address_country")
@@ -159,7 +163,6 @@ public class Address  implements Serializable{
 		this.schoolDetails = schoolDetails;
 	}
 
-
 	public Country getCountryDetails() {
 		return countryDetails;
 	}
@@ -169,7 +172,7 @@ public class Address  implements Serializable{
 		this.countryDetails = countryDetails;
 	}
 
-	public Integer getAddressCountryId() {
+	/*public Integer getAddressCountryId() {
 		return addressCountryId;
 	}
 
@@ -187,7 +190,7 @@ public class Address  implements Serializable{
 	public void setAddressSchoolId(Integer addressSchoolId) {
 		this.addressSchoolId = addressSchoolId;
 	}
-
+*/
 
 	@Override
 	public String  toString()

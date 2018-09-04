@@ -28,7 +28,7 @@ public class AddressValidator implements Validator {
 		Address addr=(Address)obj;
 		try
 		{
-		  Integer getSchoolId=addr.getAddressSchoolId();
+		 // Integer getSchoolId=addr.getAddressSchoolId();
 		}
 		catch(NumberFormatException ex)
 		{
