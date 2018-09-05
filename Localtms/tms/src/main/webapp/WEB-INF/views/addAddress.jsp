@@ -40,7 +40,7 @@
 					<form:option value="-1" label="---Select---"></form:option>
 					<form:options items="${schoolList}" />
 				</form:select></td>
-			<td><form:errors path="schoolDetails" cssClass="error" /></td>
+			<td><form:errors path="schoolDetails.schoolId" cssClass="error" /></td>
 		</tr>
 		<%--  <tr>
           <td><form:label path="">company_Id:</form:label></td>

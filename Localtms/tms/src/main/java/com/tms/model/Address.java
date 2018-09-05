@@ -58,7 +58,8 @@ public class Address  implements Serializable{
     private Integer addressCountryId;*/
 	@ManyToOne
 	@JoinColumn(name="school_id")
-	@IsValidSchool
+	@Valid
+	@NotNull
 	private School schoolDetails;
 	@ManyToOne
 	@JoinColumn(name="address_country")
