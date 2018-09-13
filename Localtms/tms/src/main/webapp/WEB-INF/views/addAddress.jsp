@@ -57,11 +57,14 @@
 		</tr>
 		<tr>
 			<td>Country:</td>
-			<td><form:select path="countryDetails.countryId" id="country">
+			<%-- <td><form:select path="countryDetails.countryId" id="country">
 					<option value="-1" label="---Select---"></option>
-					<option value="1" label="India"></option>
-					<%-- <form:options items="${countryList}" itemValue="countryId"
-						itemLabel="counrtyName" /> --%>
+				</form:select></td>
+			<td><form:errors path="countryDetails" cssClass="error" /></td> --%>
+			
+			<td><form:select path="countryDetails.countryId">
+					<option value="-1" label="---Select---"></option>
+					<form:options items="${countryList}" itemValue="countryId" itemLabel="counrtyName" />
 				</form:select></td>
 			<td><form:errors path="countryDetails" cssClass="error" /></td>
 		</tr>

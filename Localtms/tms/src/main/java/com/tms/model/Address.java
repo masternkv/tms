@@ -50,12 +50,6 @@ public class Address  implements Serializable{
 	private String addressMobNo;
 	@Column(name="address_email")
 	private String addreesEmail;
-	/*@Transient
-	@Min(value=1)
-    private Integer addressSchoolId;*/
-	/*@Transient
-	@Min(value=1)
-    private Integer addressCountryId;*/
 	@ManyToOne
 	@JoinColumn(name="school_id")
 	@Valid
@@ -173,25 +167,6 @@ public class Address  implements Serializable{
 		this.countryDetails = countryDetails;
 	}
 
-	/*public Integer getAddressCountryId() {
-		return addressCountryId;
-	}
-
-
-	public void setAddressCountryId(Integer addressCountryId) {
-		this.addressCountryId = addressCountryId;
-	}
-
-
-	public Integer getAddressSchoolId() {
-		return addressSchoolId;
-	}
-
-
-	public void setAddressSchoolId(Integer addressSchoolId) {
-		this.addressSchoolId = addressSchoolId;
-	}
-*/
 
 	@Override
 	public String  toString()
