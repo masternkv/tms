@@ -22,9 +22,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.tms.model.Address;
 import com.tms.model.Country;
 import com.tms.model.School;
+import com.tms.model.State;
 import com.tms.service.AddressService;
 import com.tms.service.CountryService;
 import com.tms.service.SchoolService;
+import com.tms.service.StateService;
 import com.tms.validator.AddressValidator;
 
 @Controller
@@ -38,6 +40,8 @@ public class SchoolController {
 	private AddressValidator addressValidator;
 	@Autowired
 	private CountryService countryService;
+	@Autowired
+	private StateService stateService;
 
 	
 	@RequestMapping(value="/displayAddress")
@@ -49,6 +53,8 @@ public class SchoolController {
 		logger.info("School Detail"+schoolList.toString());
 		List<Country> countryList=countryService.getAllCountry();
 		logger.info("Country Detail"+countryList.toString());
+		List<State> stateList=stateService.getSelectedState(1);
+		logger.info("State Details"+stateList);
 		model.addObject("countryList",countryList);
 		model.addObject("schoolList",schoolList); 
 	    model.setViewName("addAddress");

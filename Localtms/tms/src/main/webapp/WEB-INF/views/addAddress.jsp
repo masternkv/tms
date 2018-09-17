@@ -62,19 +62,22 @@
 				</form:select></td>
 			<td><form:errors path="countryDetails" cssClass="error" /></td> --%>
 			
-			<td><form:select path="countryDetails.countryId">
+			<td><form:select path="countryDetails.countryId" id="country" onblur="getAllState()">
 					<option value="-1" label="---Select---"></option>
 					<form:options items="${countryList}" itemValue="countryId" itemLabel="counrtyName" />
 				</form:select></td>
 			<td><form:errors path="countryDetails" cssClass="error" /></td>
 		</tr>
 		<tr>
-			<td><form:label path="addressCity">City:</form:label></td>
-			<td><form:input path="addressCity" /></td>
+		   <td>State:</td>
+			<td><form:select path="stateDetails.stateId" id="state">
+					<option value="-1" label="---Select---"></option>
+				</form:select></td>
+			<td><form:errors path="countryDetails" cssClass="error" /></td>
 		</tr>
 		<tr>
-			<td><form:label path="addressState">State:</form:label></td>
-			<td><form:input path="addressState" /></td>
+			<td><form:label path="addressCity">City:</form:label></td>
+			<td><form:input path="addressCity" /></td>
 		</tr>
 		<tr>
 			<td><form:label path="addressZip">Zip:</form:label></td>

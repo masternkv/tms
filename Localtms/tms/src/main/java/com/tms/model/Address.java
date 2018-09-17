@@ -2,7 +2,6 @@ package com.tms.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,17 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
 import javax.validation.Valid;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
-
-import com.tms.validator.IsValidSchool;
 
 @Entity
 @Table(name="address_details")
@@ -40,8 +32,6 @@ public class Address  implements Serializable{
 	private String addressLane2;
 	@Column(name="address_city")
 	private Integer addressCity;
-	@Column(name="address_state")
-	private Integer addressState;
 	@Column(name="address_zip")
 	private Integer addressZip;
 	@Column(name="address_phoneno")
@@ -58,7 +48,9 @@ public class Address  implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="address_country")
 	private Country countryDetails;
-	
+	@ManyToOne
+	@JoinColumn(name="address_state")
+	private CountryState stateDetails;
 
 	public Integer getAddressId() {
 		return addressId;
@@ -98,17 +90,6 @@ public class Address  implements Serializable{
 	public void setAddressCity(Integer addressCity) {
 		this.addressCity = addressCity;
 	}
-
-
-	public Integer getAddressState() {
-		return addressState;
-	}
-
-
-	public void setAddressState(Integer addressState) {
-		this.addressState = addressState;
-	}
-
 
 	public Integer getAddressZip() {
 		return addressZip;
@@ -168,11 +149,22 @@ public class Address  implements Serializable{
 	}
 
 
+	
+	public CountryState getStateDetails() {
+		return stateDetails;
+	}
+
+
+	public void setStateDetails(CountryState stateDetails) {
+		this.stateDetails = stateDetails;
+	}
+
+
 	@Override
 	public String  toString()
 	{
 		return "addressDetail is:"+addressId+":"+addressLane1+":"+addressLane2
-				+":"+addressCity+":"+addressState+":"+"addressZip"+":"+countryDetails.getCountryId()
+				+":"+addressCity+":"+stateDetails.getState_Name()+":"+"addressZip"+":"+countryDetails.getCountryId()
 				+":"+addressPhoneNo+":"+addressMobNo+":"+addreesEmail+":"+schoolDetails.getSchoolId();
 	}
 
