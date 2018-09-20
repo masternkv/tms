@@ -14,7 +14,7 @@ public class School {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="school_id")
-	@Min(value=1,message="Please select one of value")
+	@Min(value=1)
 	private Integer schoolId;
     @Column(name="school_name")
     private String schoolName;

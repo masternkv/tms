@@ -24,8 +24,8 @@ public class StateDaoImpl implements StateDao{
 	public List<State> getSelectedSate(Integer state) {
 		Criteria criteria=sessionFactory.getCurrentSession().createCriteria(CountryState.class)
 				.add(Restrictions.eq("country.countryId", state));
-		
-		List<State> getSelectedState=criteria.list();
+		@SuppressWarnings("unchecked")
+		List<State> getSelectedState=(List<State>)criteria.list();
 		
 		return getSelectedState;
 	}

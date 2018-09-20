@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name="state")
@@ -19,6 +20,7 @@ public class CountryState implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="state_id")
+	@Min(value=1)
 	private Integer stateId;
 	@Column(name="state_name")
 	private String state_Name;

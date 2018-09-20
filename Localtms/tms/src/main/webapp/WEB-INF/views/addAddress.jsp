@@ -1,5 +1,6 @@
 
 
+
 <%-- 
     Document   : addCompany
     Created on : Feb 16, 2017, 7:55:36 AM
@@ -66,14 +67,14 @@
 					<option value="-1" label="---Select---"></option>
 					<form:options items="${countryList}" itemValue="countryId" itemLabel="counrtyName" />
 				</form:select></td>
-			<td><form:errors path="countryDetails" cssClass="error" /></td>
+			<td><form:errors path="countryDetails.countryId" cssClass="error" /></td>
 		</tr>
 		<tr>
 		   <td>State:</td>
 			<td><form:select path="stateDetails.stateId" id="state">
 					<option value="-1" label="---Select---"></option>
 				</form:select></td>
-			<td><form:errors path="countryDetails" cssClass="error" /></td>
+			<td><form:errors path="stateDetails.stateId" cssClass="error" /></td>
 		</tr>
 		<tr>
 			<td><form:label path="addressCity">City:</form:label></td>

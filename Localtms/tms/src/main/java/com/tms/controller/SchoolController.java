@@ -31,54 +31,47 @@ import com.tms.validator.AddressValidator;
 
 @Controller
 public class SchoolController {
-	public static final Logger logger=Logger.getLogger(SchoolController.class);
+	public static final Logger logger = Logger
+			.getLogger(SchoolController.class);
 	@Autowired
 	private AddressService addrService;
 	@Autowired
 	private SchoolService schoolService;
 	@Autowired
-	private AddressValidator addressValidator;
-	@Autowired
 	private CountryService countryService;
 	@Autowired
 	private StateService stateService;
 
-	
-	@RequestMapping(value="/displayAddress")
-	public ModelAndView displayAddress(ModelAndView model,@ModelAttribute("address")Address addr)
-	{
-		
+	@RequestMapping(value = "/displayAddress")
+	public ModelAndView displayAddress(ModelAndView model,
+			@ModelAttribute("address") Address addr) {
+
 		logger.info("In Display Address url");
-		List<School> schoolList=schoolService.getAllSchool();
-		logger.info("School Detail"+schoolList.toString());
-		List<Country> countryList=countryService.getAllCountry();
-		logger.info("Country Detail"+countryList.toString());
-		List<State> stateList=stateService.getSelectedState(1);
-		logger.info("State Details"+stateList);
-		model.addObject("countryList",countryList);
-		model.addObject("schoolList",schoolList); 
-	    model.setViewName("addAddress");
+		List<School> schoolList = schoolService.getAllSchool();
+		logger.info("School Detail" + schoolList.toString());
+		List<Country> countryList = countryService.getAllCountry();
+		logger.info("Country Detail" + countryList.toString());
+		model.addObject("countryList", countryList);
+		model.addObject("schoolList", schoolList);
+		model.setViewName("addAddress");
 		return model;
 	}
-    @RequestMapping(value="/saveSchAddr",method = RequestMethod.POST)  
-    public ModelAndView saveSchoolAddress(ModelAndView model, @ModelAttribute("address") @Valid Address address,BindingResult result )
-    {   
-    	//addressValidator.validate(addr, result);
-    	if(result.hasErrors())
-    	{
-    		List<School> schoolList=schoolService.getAllSchool();
-    		model.addObject("schoolList",schoolList);
-    	    model.setViewName("addAddress");
-    		return model;
-    	}
-    	else
-    	{
-        	addrService.saveAddress(address);
-         return new ModelAndView("redirect:displayAddress");
-    	}
-    	
-    }
-    
-    
-    
+
+	@RequestMapping(value = "/saveSchAddr", method = RequestMethod.POST)
+	public ModelAndView saveSchoolAddress(ModelAndView model,
+			@ModelAttribute("address") @Valid Address address,
+			BindingResult result) {
+
+		if (result.hasErrors()) {
+			List<School> schoolList = schoolService.getAllSchool();
+			model.addObject("schoolList", schoolList);
+			model.setViewName("addAddress");
+			return model;
+		} else {
+			addrService.saveAddress(address);
+			return new ModelAndView("redirect:displayAddress");
+		}
+
+	}
+
 }

@@ -16,6 +16,7 @@ public class Country implements Serializable {
 	@Id
 	@Column(name="country_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Min(value=1,message="Please enter valid country")
 	private Integer countryId;
 	@Column(name="country_name")
 	private String counrtyName;
