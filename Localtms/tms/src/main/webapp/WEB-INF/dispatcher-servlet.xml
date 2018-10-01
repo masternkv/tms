@@ -28,6 +28,6 @@ xmlns:mvc="http://www.springframework.org/schema/mvc"
     </bean>
     
     
-<mvc:resources mapping="/static/**" location="//static/"
+<mvc:resources mapping="/static/**" location="/static/"
 	cache-period="31556926"/>
 </beans>

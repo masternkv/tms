@@ -61,7 +61,6 @@ public class SchoolController {
 	public ModelAndView saveSchoolAddress(ModelAndView model,
 			@ModelAttribute("address") @Valid Address address,
 			BindingResult result) {
-
 		if (result.hasErrors()) {
 			List<School> schoolList = schoolService.getAllSchool();
 			model.addObject("schoolList", schoolList);
@@ -69,6 +68,7 @@ public class SchoolController {
 			return model;
 		} else {
 			addrService.saveAddress(address);
+			
 			return new ModelAndView("redirect:displayAddress");
 		}
 
