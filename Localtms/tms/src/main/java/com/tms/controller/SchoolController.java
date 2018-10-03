@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tms.model.Address;
@@ -30,6 +31,7 @@ import com.tms.service.StateService;
 import com.tms.validator.AddressValidator;
 
 @Controller
+@SessionAttributes("schAddrSucc")
 public class SchoolController {
 	public static final Logger logger = Logger
 			.getLogger(SchoolController.class);
@@ -63,15 +65,19 @@ public class SchoolController {
 			BindingResult result) {
 		if (result.hasErrors()) {
 			List<School> schoolList = schoolService.getAllSchool();
+			String s="success";
 			model.addObject("schoolList", schoolList);
+			model.addObject("schAddrSucc", s);
 			model.setViewName("addAddress");
 			return model;
 		} else {
 			addrService.saveAddress(address);
-			
+			String s="success";
+			model.addObject("schAddrSucc", s);
 			return new ModelAndView("redirect:displayAddress");
 		}
 
 	}
+	
 
 }
