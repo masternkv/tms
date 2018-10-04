@@ -53,11 +53,12 @@
 		         <form:errors path="*" cssClass="alert alert-danger alert-dismissible fade in" element="div" />
                 </div>        
 				</spring:hasBindErrors>
-				
-				<div class="alert alert-danger alert-dismissible fade in">
+				<c:if test="${message !=null}">
+				<div class="alert alert-danger alert-dismissible fade in" style="text-align: center">
 				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				 <strong>Error ! ${schAddrSucc}</strong> Please fill mandatory filed.
+				 <strong>${message}</strong>
 				 </div>
+				 </c:if>
 					<!--<div class="row">--->
 						<!---sepration of colum 1 ---->
 						<div class="col-sm-5">

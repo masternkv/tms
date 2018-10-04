@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tms.model.Address;
 import com.tms.model.Country;
@@ -62,18 +63,19 @@ public class SchoolController {
 	@RequestMapping(value = "/saveSchAddr", method = RequestMethod.POST)
 	public ModelAndView saveSchoolAddress(ModelAndView model,
 			@ModelAttribute("address") @Valid Address address,
-			BindingResult result) {
+			BindingResult result,final RedirectAttributes redirectAttribuites) {
 		if (result.hasErrors()) {
 			List<School> schoolList = schoolService.getAllSchool();
 			String s="success";
 			model.addObject("schoolList", schoolList);
-			model.addObject("schAddrSucc", s);
+			//model.addObject("schAddrSucc", s);
 			model.setViewName("addAddress");
 			return model;
 		} else {
 			addrService.saveAddress(address);
-			String s="success";
-			model.addObject("schAddrSucc", s);
+			//String s="success";
+			//model.addObject("schAddrSucc", s);
+			redirectAttribuites.addFlashAttribute("message","Saved successfully");
 			return new ModelAndView("redirect:displayAddress");
 		}
 
