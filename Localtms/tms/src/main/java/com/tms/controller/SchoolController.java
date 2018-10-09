@@ -68,13 +68,10 @@ public class SchoolController {
 			List<School> schoolList = schoolService.getAllSchool();
 			String s="success";
 			model.addObject("schoolList", schoolList);
-			//model.addObject("schAddrSucc", s);
 			model.setViewName("addAddress");
 			return model;
 		} else {
 			addrService.saveAddress(address);
-			//String s="success";
-			//model.addObject("schAddrSucc", s);
 			redirectAttribuites.addFlashAttribute("message","Saved successfully");
 			return new ModelAndView("redirect:displayAddress");
 		}
