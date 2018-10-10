@@ -68,3 +68,22 @@ function getAllState() {
 	
 
 }
+//This is used for check all in address list table
+$(document).ready(function(){
+	$("#mytable #checkall").click(function () {
+	        if ($("#mytable #checkall").is(':checked')) {
+	            $("#mytable input[type=checkbox]").each(function () {
+	                $(this).prop("checked", true);
+	            });
+
+	        } else {
+	            $("#mytable input[type=checkbox]").each(function () {
+	                $(this).prop("checked", false);
+	            });
+	        }
+	    });
+	});
+
+	 $(function () {
+	            $("[rel='tooltip']").tooltip();
+	        });
