@@ -20,9 +20,10 @@ public class AddressServiceImpl implements AddressService {
 		addrDao.saveAddress(addr);
 	}
 	@Override
+	@Transactional
 	public List<Object[]> getAllSchAddress() {
 		
-		return null;
+		return addrDao.getAllSchAddress();
 	}
 	
 
