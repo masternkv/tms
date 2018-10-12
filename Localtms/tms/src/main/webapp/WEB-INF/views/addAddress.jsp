@@ -227,12 +227,11 @@
                    <thead>
                    
                    <th><input type="checkbox" id="checkall" /></th>
-                   <th>First Name</th>
-                    <th>Last Name</th>
+                   <th>School Id</th>
                      <th>Address</th>
                      <th>Email</th>
-                     <th>Contact</th>
-                      <th>Edit</th>
+                     <th>Mobile Number</th>
+                      <th>Phone Number</th>
                       
                        <th>Delete</th>
                    </thead>
@@ -240,7 +239,7 @@
     <c:forEach var="schoolAddress" items="${allSchoolAddr}">			
     <tr>
     <td><input type="checkbox" class="checkthis" /></td>
-    <td>${schoolAddress[0].addressLane1}</td>
+    <td>${schoolAddress[0].addressId}</td>
     <td>${schoolAddress[0].countryDetails.counrtyName}
     ${schoolAddress[0].addressLane1} ${schoolAddress[0].addressLane1} ${schoolAddress[0].addressLane1}</td>
     <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
