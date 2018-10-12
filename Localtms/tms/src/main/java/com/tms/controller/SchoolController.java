@@ -57,6 +57,7 @@ public class SchoolController {
 		List<Object[]> allSchoolAddr= addrService.getAllSchAddress();
 		model.addObject("countryList", countryList);
 		model.addObject("schoolList", schoolList);
+		model.addObject("allSchoolAddr",allSchoolAddr);
 		model.setViewName("addAddress");
 		return model;
 	}

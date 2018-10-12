@@ -32,6 +32,7 @@ public class AddressDaoImpl implements AddressDao{
 		Query query = sessionFactory.getCurrentSession().createQuery(hql); 
 		
 		List<Object[]> listResult = query.list();
+	
 
 		for (Object[] aRow : listResult) {
 		    Address address = (Address) aRow[0];
