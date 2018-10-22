@@ -87,3 +87,30 @@ $(document).ready(function(){
 	 $(function () {
 	            $("[rel='tooltip']").tooltip();
 	        });
+	 
+	 
+ $(document).ready(function(){
+	 $(document).on('click', '.edit_data', function(){  
+		 $('#edit').modal('show'); 
+         var employee_id = $(this).attr("id");  
+         $.ajax({  
+              url:"/tms/getSchoolAddrById",  
+              method:"GET",  
+              data:{employee_id:employee_id},  
+              dataType:"json",  
+              success:function(data){  
+                   $('#schoolAddress1').val(data.addressLane1);  
+                   $('#schoolAddress2').val(data.addressLane2);  
+                   /*$('#gender').val(data.gender);  
+                   $('#designation').val(data.designation);  
+                   $('#age').val(data.age);  
+                   $('#employee_id').val(data.id);  
+                   $('#insert').val("Update");  
+                   $('#edit').modal('show'); */ 
+              }  
+         });  
+    });
+ });
+	 
+	 
+	 

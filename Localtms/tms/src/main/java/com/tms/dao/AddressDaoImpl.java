@@ -8,6 +8,7 @@ import java.util.List;
 
 
 
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +30,25 @@ public class AddressDaoImpl implements AddressDao{
 	public List<Object[]> getAllSchAddress() {
 		// TODO Auto-generated method stub
 		String hql="from Address a inner join a.schoolDetails inner join a.countryDetails inner join a. stateDetails";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql); 
-		
+		Query query = sessionFactory.getCurrentSession().createQuery(hql); 	
 		List<Object[]> listResult = query.list();
-	
-
-		for (Object[] aRow : listResult) {
-		    Address address = (Address) aRow[0];
-		    School school = (School) aRow[1];
-		    Country country=(Country)aRow[2];
-		    System.out.println(address.getAddressLane1()+ " - " + school.getSchoolName()+" - "+country.getCountryId());
-		}
 		return listResult;
+	}
+	@Override
+	public List<Object[]> getAddressById(Integer schoolId) {
+		System.out.println("Serching...................");
+		String hql="from Address a inner join a.schoolDetails inner join a.countryDetails inner join a. stateDetails where a.addressId=:schoolId";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameter("schoolId", schoolId);
+		 List<Object[]> addressById =query.list();
+		 for (Object[] aRow : addressById) {
+			    Address address = (Address) aRow[0];
+			    School school = (School) aRow[1];
+			    Country country=(Country)aRow[2];
+			    System.out.println(address.getAddressLane1()+ " - " + school.getSchoolName()+" - "+country.getCountryId());
+			}
+		 
+		return addressById;
 	}
 
 }

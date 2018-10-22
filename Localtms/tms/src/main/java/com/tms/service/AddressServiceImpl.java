@@ -25,6 +25,12 @@ public class AddressServiceImpl implements AddressService {
 		
 		return addrDao.getAllSchAddress();
 	}
+	@Override
+	@Transactional
+	public List<Object[]> getAddressById(Integer schoolId) {
+		// TODO Auto-generated method stub
+		return addrDao.getAddressById(schoolId);
+	}
 	
 
 }

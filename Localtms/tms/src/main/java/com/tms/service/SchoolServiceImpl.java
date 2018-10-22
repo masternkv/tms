@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tms.dao.SchoolDao;
+import com.tms.model.Address;
 import com.tms.model.School;
 
 @Service

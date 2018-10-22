@@ -246,11 +246,12 @@
     <td>${schoolAddress[0].addreesEmail}</td>
     <td>${schoolAddress[0].addressMobNo}</td>
     <td>${schoolAddress[0].addressPhoneNo}</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    </tbody>
-    </c:forEach>   
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit" id="${schoolAddress[0].addressId}"><button class="btn btn-primary btn-xs edit_data" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Delete" id="${schoolAddress[0].addressId}"><button class="btn btn-danger btn-xs delete_data" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    </tr> 
+    </c:forEach> 
+     </tbody>
+     
 </table>
 
 <div class="clearfix"></div>
@@ -275,6 +276,7 @@
 		
 </div>
 <!-- Model POPUP -->
+<c:forEach var="schoolAddress" items="${allSchoolAddr}">
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
@@ -283,18 +285,30 @@
         <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
       </div>
           <div class="modal-body">
-          <div class="form-group">
-        <input class="form-control " type="text" placeholder="Mohsin">
-        </div>
-        <div class="form-group">
-        
-        <input class="form-control " type="text" placeholder="Irshad">
-        </div>
-        <div class="form-group">
-        <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
-    
-        
-        </div>
+             <form method="post" id="update_form">
+               <div class="form-group">
+                  <input class="form-control " type="text" id="schoolAddress1" placeholder="Address Lane 1">
+               </div>
+                <div class="form-group">
+                  <input class="form-control " type="text" id="schoolAddress2" placeholder="Address Lane 2">
+               </div>
+                <div class="form-group">
+                  <input class="form-control " type="text" placeholder="Address Lane 1">
+               </div>
+                <div class="form-group">
+                  <input class="form-control " type="text" placeholder="Address Lane 1">
+               </div>
+                <div class="form-group">
+                  <input class="form-control " type="text" placeholder="Address Lane 1">
+               </div>
+                <div class="form-group">
+                  <input class="form-control " type="text" placeholder="Address Lane 1">
+               </div>
+                <div class="form-group">
+                  <input class="form-control " type="text" placeholder="Address Lane 1">
+               </div>
+               s
+        </form>
       </div>
           <div class="modal-footer ">
         <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
@@ -328,6 +342,7 @@
   </div>
       <!-- /.modal-dialog --> 
     </div>
+    </c:forEach>
 <!-- End of Model Popup -->
 </body>
 </html>
