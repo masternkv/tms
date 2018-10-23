@@ -90,23 +90,26 @@ $(document).ready(function(){
 	 
 	 
  $(document).ready(function(){
-	 $(document).on('click', '.edit_data', function(){  
-		 $('#edit').modal('show'); 
-         var employee_id = $(this).attr("id");  
+	 $(document).on('click', '.edit_data', function(){ 
+		 var schoolId = $(this).attr("id");   
          $.ajax({  
-              url:"/tms/getSchoolAddrById",  
-              method:"GET",  
-              data:{employee_id:employee_id},  
-              dataType:"json",  
+              url:"getSchoolAddrById", 
+              type:"GET",  
+              data:{
+            	  schoolId:schoolId
+            	  },  
+                 dataType:"json",  
               success:function(data){  
-                   $('#schoolAddress1').val(data.addressLane1);  
-                   $('#schoolAddress2').val(data.addressLane2);  
+            	  console.log("SUCCESS: ", data);
+                   $('#schoolAddress1').val(data[0][0].addressLane1);  
+                   $('#schoolAddress2').val(data[0][0].addressLane2);  
                    /*$('#gender').val(data.gender);  
                    $('#designation').val(data.designation);  
                    $('#age').val(data.age);  
                    $('#employee_id').val(data.id);  
                    $('#insert').val("Update");  
                    $('#edit').modal('show'); */ 
+                   $('#edit').modal('show');
               }  
          });  
     });

@@ -246,7 +246,7 @@
     <td>${schoolAddress[0].addreesEmail}</td>
     <td>${schoolAddress[0].addressMobNo}</td>
     <td>${schoolAddress[0].addressPhoneNo}</td>
-    <td><p data-placement="top" data-toggle="tooltip" title="Edit" id="${schoolAddress[0].addressId}"><button class="btn btn-primary btn-xs edit_data" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button id="${schoolAddress[0].addressId}" class="btn btn-primary btn-xs edit_data" data-title="Edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
     <td><p data-placement="top" data-toggle="tooltip" title="Delete" id="${schoolAddress[0].addressId}"><button class="btn btn-danger btn-xs delete_data" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
     </tr> 
     </c:forEach> 
@@ -287,7 +287,7 @@
           <div class="modal-body">
              <form method="post" id="update_form">
                <div class="form-group">
-                  <input class="form-control " type="text" id="schoolAddress1" placeholder="Address Lane 1">
+                  <input class="form-control " type="text" id="schoolAddress1" placeholder="Address Lane 2">
                </div>
                 <div class="form-group">
                   <input class="form-control " type="text" id="schoolAddress2" placeholder="Address Lane 2">
@@ -307,7 +307,6 @@
                 <div class="form-group">
                   <input class="form-control " type="text" placeholder="Address Lane 1">
                </div>
-               s
         </form>
       </div>
           <div class="modal-footer ">

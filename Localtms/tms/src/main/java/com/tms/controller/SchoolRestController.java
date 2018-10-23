@@ -49,7 +49,7 @@ public class SchoolRestController {
 		return stateList;
     }
 	@RequestMapping(value="getSchoolAddrById",method=RequestMethod.GET)
-    public @ResponseBody List<Object[]> getSchoolAddrById(@RequestParam("school_id")Integer schoolId)
+    public @ResponseBody List<Object[]> getSchoolAddrById(@RequestParam("schoolId")Integer schoolId)
     {
 		
 		List<Object[]> getSchoolAddrById=addrService.getAddressById(schoolId);
