@@ -293,10 +293,15 @@
                   <input class="form-control " type="text" id="schoolAddress2" placeholder="Address Lane 2">
                </div>
                 <div class="form-group">
-                  <input class="form-control " type="text" placeholder="Address Lane 1">
+                  <select class="form-control" name="schoolAddressCountry" id="schoolAddressCountry" onblur="getSchoolStateById()">
+                  <c:forEach var="setCountry" items="${countryList}">
+                  <option value="${setCountry.countryId}">${setCountry.counrtyName}</option>
+                  </c:forEach>
+                  </select>
                </div>
                 <div class="form-group">
-                  <input class="form-control " type="text" placeholder="Address Lane 1">
+                  <select class="form-control" name="schoolAddressState" id="schoolAddressState">
+                  </select>
                </div>
                 <div class="form-group">
                   <input class="form-control " type="text" placeholder="Address Lane 1">

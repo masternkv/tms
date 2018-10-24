@@ -43,6 +43,20 @@ function setSateSelectbox(stateList) {
 							+ '">' + value.state_Name + '</option>';
 				});
 		$('#state').html(options);
+		$('#schoolAddressCountry').html(options);
+	}
+}
+
+function setSateSelectboxById(stateList) {
+
+	var options = '<option value="-1">---Select---</option>';
+	if (stateList != null) {
+		$(stateList).each(
+				function(index, value) {
+					options = options + '<option value="' + value.stateId
+							+ '">' + value.state_Name + '</option>';
+				});
+		$('#schoolAddressState').html(options);
 	}
 }
 
@@ -57,6 +71,29 @@ function getAllState() {
 		},
 		success : function(stateList) {
 			setSateSelectbox(stateList);
+			console.log("SUCCESS: ", stateList);
+
+		},
+		error : function(e) {
+			$("#getResultDiv").html("<strong>Error</strong>");
+			console.log("ERROR: ", e);
+		}
+	});
+	
+
+}
+
+function getSchoolStateById() {
+	var state=$('#schoolAddressCountry').val();
+	$.ajax({
+		type : "GET",
+		contentType : "application/json",
+		url : "/tms/getState",
+		data:{
+			state:state
+		},
+		success : function(stateList) {
+			setSateSelectboxById(stateList);
 			console.log("SUCCESS: ", stateList);
 
 		},
@@ -102,7 +139,9 @@ $(document).ready(function(){
               success:function(data){  
             	  console.log("SUCCESS: ", data);
                    $('#schoolAddress1').val(data[0][0].addressLane1);  
-                   $('#schoolAddress2').val(data[0][0].addressLane2);  
+                   $('#schoolAddress2').val(data[0][0].addressLane2); 
+                   $('#schoolAddressCountry').val(data[0][0].countryDetails.countryId);
+                   $('#schoolAddressState').val(data[0][0].stateDetails.stateId);
                    /*$('#gender').val(data.gender);  
                    $('#designation').val(data.designation);  
                    $('#age').val(data.age);  
