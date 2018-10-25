@@ -141,7 +141,10 @@ $(document).ready(function(){
                    $('#schoolAddress1').val(data[0][0].addressLane1);  
                    $('#schoolAddress2').val(data[0][0].addressLane2); 
                    $('#schoolAddressCountry').val(data[0][0].countryDetails.countryId);
-                   $('#schoolAddressState').val(data[0][0].stateDetails.stateId);
+                  var options ='<option value="' + data[0][0].stateDetails.stateId
+					+ '">' + data[0][0].stateDetails.state_Name + '</option>';
+                  $('#schoolAddressState').html(options);
+                 //  $('#schoolAddressState').val(data[0][0].stateDetails.stateId);
                    /*$('#gender').val(data.gender);  
                    $('#designation').val(data.designation);  
                    $('#age').val(data.age);  

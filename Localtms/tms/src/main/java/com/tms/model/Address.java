@@ -30,8 +30,6 @@ public class Address  implements Serializable{
 	private String addressLane1;
 	@Column(name="address_lane2")
 	private String addressLane2;
-	@Column(name="address_city")
-	private Integer addressCity;
 	@Column(name="address_zip")
 	private Integer addressZip;
 	@Column(name="address_phoneno")
@@ -55,6 +53,9 @@ public class Address  implements Serializable{
 	@Valid
 	@NotNull
 	private CountryState stateDetails;
+	@ManyToOne
+	@JoinColumn(name="address_city")
+	private City addressCity;
 
 	public Integer getAddressId() {
 		return addressId;
@@ -85,15 +86,6 @@ public class Address  implements Serializable{
 		this.addressLane2 = addressLane2;
 	}
 
-
-	public Integer getAddressCity() {
-		return addressCity;
-	}
-
-
-	public void setAddressCity(Integer addressCity) {
-		this.addressCity = addressCity;
-	}
 
 	public Integer getAddressZip() {
 		return addressZip;
@@ -161,6 +153,16 @@ public class Address  implements Serializable{
 
 	public void setStateDetails(CountryState stateDetails) {
 		this.stateDetails = stateDetails;
+	}
+
+
+	public City getAddressCity() {
+		return addressCity;
+	}
+
+
+	public void setAddressCity(City addressCity) {
+		this.addressCity = addressCity;
 	}
 
 

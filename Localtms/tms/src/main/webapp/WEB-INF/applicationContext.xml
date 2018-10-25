@@ -45,6 +45,7 @@
                 <value>com.tms.model.School</value>
                 <value>com.tms.model.Country</value>
                 <value>com.tms.model.CountryState</value>
+                <value>com.tms.model.City</value>
             </list>
         </property>
         <property name="hibernateProperties">

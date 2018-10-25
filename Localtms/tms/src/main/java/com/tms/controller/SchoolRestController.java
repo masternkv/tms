@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tms.model.City;
 import com.tms.model.Country;
 import com.tms.model.School;
 import com.tms.model.State;
 import com.tms.service.AddressService;
+import com.tms.service.CityService;
 import com.tms.service.CountryService;
 import com.tms.service.SchoolService;
 import com.tms.service.StateService;
@@ -30,6 +32,8 @@ public class SchoolRestController {
 	private StateService stateService;
 	@Autowired
 	private AddressService addrService;
+	@Autowired
+	private CityService cityService;
 	
 	@RequestMapping(value="/getCountry",method=RequestMethod.GET)
 	public @ResponseBody List<Country> getAllCountry()
@@ -48,6 +52,16 @@ public class SchoolRestController {
 	
 		return stateList;
     }
+	
+	@RequestMapping(value="getCity",method=RequestMethod.GET)
+    public @ResponseBody List<City> getSelectedCity()
+    {
+		Integer city=1;
+		List<City> cityList=cityService.getSelectedCity(city);
+	
+		return cityList;
+    }
+	
 	@RequestMapping(value="getSchoolAddrById",method=RequestMethod.GET)
     public @ResponseBody List<Object[]> getSchoolAddrById(@RequestParam("schoolId")Integer schoolId)
     {
