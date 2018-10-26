@@ -55,7 +55,7 @@ public class Address  implements Serializable{
 	private CountryState stateDetails;
 	@ManyToOne
 	@JoinColumn(name="address_city")
-	private City addressCity;
+	private City cityDetails;
 
 	public Integer getAddressId() {
 		return addressId;
@@ -155,14 +155,13 @@ public class Address  implements Serializable{
 		this.stateDetails = stateDetails;
 	}
 
-
-	public City getAddressCity() {
-		return addressCity;
+	public City getCityDetails() {
+		return cityDetails;
 	}
 
 
-	public void setAddressCity(City addressCity) {
-		this.addressCity = addressCity;
+	public void setCityDetails(City cityDetails) {
+		this.cityDetails = cityDetails;
 	}
 
 
@@ -170,7 +169,7 @@ public class Address  implements Serializable{
 	public String  toString()
 	{
 		return "addressDetail is:"+addressId+":"+addressLane1+":"+addressLane2
-				+":"+addressCity+":"+stateDetails.getState_Name()+":"+"addressZip"+":"+countryDetails.getCountryId()
+				+":"+stateDetails.getState_Name()+":"+"addressZip"+":"+countryDetails.getCountryId()
 				+":"+addressPhoneNo+":"+addressMobNo+":"+addreesEmail+":"+schoolDetails.getSchoolId();
 	}
 

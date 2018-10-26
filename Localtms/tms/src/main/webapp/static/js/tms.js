@@ -43,7 +43,19 @@ function setSateSelectbox(stateList) {
 							+ '">' + value.state_Name + '</option>';
 				});
 		$('#state').html(options);
-		$('#schoolAddressCountry').html(options);
+	}
+}
+
+function setCitySelectbox(cityList) {
+
+	var options = '<option value="-1">---Select---</option>';
+	if (cityList != null) {
+		$(cityList).each(
+				function(index, value) {
+					options = options + '<option value="' + value.cityId + '">'
+							+ value.cityName + '</option>';
+				});
+		$('#city').html(options);
 	}
 }
 
@@ -61,13 +73,13 @@ function setSateSelectboxById(stateList) {
 }
 
 function getAllState() {
-	var state=$('#country').val();
+	var state = $('#country').val();
 	$.ajax({
 		type : "GET",
 		contentType : "application/json",
 		url : "/tms/getState",
-		data:{
-			state:state
+		data : {
+			state : state
 		},
 		success : function(stateList) {
 			setSateSelectbox(stateList);
@@ -79,18 +91,17 @@ function getAllState() {
 			console.log("ERROR: ", e);
 		}
 	});
-	
 
 }
 
 function getSchoolStateById() {
-	var state=$('#schoolAddressCountry').val();
+	var state = $('#schoolAddressCountry').val();
 	$.ajax({
 		type : "GET",
 		contentType : "application/json",
 		url : "/tms/getState",
-		data:{
-			state:state
+		data : {
+			state : state
 		},
 		success : function(stateList) {
 			setSateSelectboxById(stateList);
@@ -102,60 +113,88 @@ function getSchoolStateById() {
 			console.log("ERROR: ", e);
 		}
 	});
-	
+
+}
+
+function getAllCity() {
+	var city = $('#state').val();
+	$.ajax({
+		type : "GET",
+		contentType : "application/json",
+		url : "getCity",
+		data : {
+			
+			city : city
+		},
+		success : function(cityList) {
+			setCitySelectbox(cityList);
+			console.log("SUCCESS: ", cityList);
+
+		},
+		error : function(e) {
+			$("#getResultDiv").html("<strong>Error</strong>");
+			console.log("ERROR: ", e);
+		}
+	});
 
 }
 //This is used for check all in address list table
-$(document).ready(function(){
-	$("#mytable #checkall").click(function () {
-	        if ($("#mytable #checkall").is(':checked')) {
-	            $("#mytable input[type=checkbox]").each(function () {
-	                $(this).prop("checked", true);
-	            });
+$(document).ready(function() {
+	$("#mytable #checkall").click(function() {
+		if ($("#mytable #checkall").is(':checked')) {
+			$("#mytable input[type=checkbox]").each(function() {
+				$(this).prop("checked", true);
+			});
 
-	        } else {
-	            $("#mytable input[type=checkbox]").each(function () {
-	                $(this).prop("checked", false);
-	            });
-	        }
-	    });
+		} else {
+			$("#mytable input[type=checkbox]").each(function() {
+				$(this).prop("checked", false);
+			});
+		}
 	});
+});
 
-	 $(function () {
-	            $("[rel='tooltip']").tooltip();
-	        });
-	 
-	 
- $(document).ready(function(){
-	 $(document).on('click', '.edit_data', function(){ 
-		 var schoolId = $(this).attr("id");   
-         $.ajax({  
-              url:"getSchoolAddrById", 
-              type:"GET",  
-              data:{
-            	  schoolId:schoolId
-            	  },  
-                 dataType:"json",  
-              success:function(data){  
-            	  console.log("SUCCESS: ", data);
-                   $('#schoolAddress1').val(data[0][0].addressLane1);  
-                   $('#schoolAddress2').val(data[0][0].addressLane2); 
-                   $('#schoolAddressCountry').val(data[0][0].countryDetails.countryId);
-                  var options ='<option value="' + data[0][0].stateDetails.stateId
-					+ '">' + data[0][0].stateDetails.state_Name + '</option>';
-                  $('#schoolAddressState').html(options);
-                 //  $('#schoolAddressState').val(data[0][0].stateDetails.stateId);
-                   /*$('#gender').val(data.gender);  
-                   $('#designation').val(data.designation);  
-                   $('#age').val(data.age);  
-                   $('#employee_id').val(data.id);  
-                   $('#insert').val("Update");  
-                   $('#edit').modal('show'); */ 
-                   $('#edit').modal('show');
-              }  
-         });  
-    });
- });
-	 
-	 
-	 
+$(function() {
+	$("[rel='tooltip']").tooltip();
+});
+
+$(document).ready(
+		function() {
+			$(document).on(
+					'click',
+					'.edit_data',
+					function() {
+						var schoolId = $(this).attr("id");
+						$.ajax({
+							url : "getSchoolAddrById",
+							type : "GET",
+							data : {
+								schoolId : schoolId
+							},
+							dataType : "json",
+							success : function(data) {
+								console.log("SUCCESS: ", data);
+								$('#schoolAddress1').val(
+										data[0][0].addressLane1);
+								$('#schoolAddress2').val(
+										data[0][0].addressLane2);
+								$('#schoolAddressCountry').val(
+										data[0][0].countryDetails.countryId);
+								var options = '<option value="'
+										+ data[0][0].stateDetails.stateId
+										+ '">'
+										+ data[0][0].stateDetails.state_Name
+										+ '</option>';
+								$('#schoolAddressState').html(options);
+								//  $('#schoolAddressState').val(data[0][0].stateDetails.stateId);
+								/*$('#gender').val(data.gender);  
+								$('#designation').val(data.designation);  
+								$('#age').val(data.age);  
+								$('#employee_id').val(data.id);  
+								$('#insert').val("Update");  
+								$('#edit').modal('show'); */
+								$('#edit').modal('show');
+							}
+						});
+					});
+		});

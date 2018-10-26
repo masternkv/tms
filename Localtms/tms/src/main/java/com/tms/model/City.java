@@ -22,7 +22,7 @@ public class City  implements Serializable{
 	@Column(name="city_id")
 	private Integer cityId;
 	@Column(name="city_name")
-	private String CityName;
+	private String cityName;
 	@ManyToOne
 	@JoinColumn(name="state_id")
 	private CountryState countryState;
@@ -32,11 +32,12 @@ public class City  implements Serializable{
 	public void setCityId(Integer cityId) {
 		this.cityId = cityId;
 	}
+	
 	public String getCityName() {
-		return CityName;
+		return cityName;
 	}
 	public void setCityName(String cityName) {
-		CityName = cityName;
+		this.cityName = cityName;
 	}
 	public CountryState getCountryState() {
 		return countryState;

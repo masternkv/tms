@@ -54,9 +54,8 @@ public class SchoolRestController {
     }
 	
 	@RequestMapping(value="getCity",method=RequestMethod.GET)
-    public @ResponseBody List<City> getSelectedCity()
+    public @ResponseBody List<City> getSelectedCity(Integer city)
     {
-		Integer city=1;
 		List<City> cityList=cityService.getSelectedCity(city);
 	
 		return cityList;
