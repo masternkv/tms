@@ -9,4 +9,5 @@ public interface AddressService {
 	public void saveAddress(Address addr);
 	public List<Object[]>getAllSchAddress();
 	public List<Object[]> getAddressById(Integer schoolId);
+	
 }

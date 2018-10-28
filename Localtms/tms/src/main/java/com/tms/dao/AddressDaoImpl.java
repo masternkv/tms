@@ -29,7 +29,7 @@ public class AddressDaoImpl implements AddressDao{
 	@Override
 	public List<Object[]> getAllSchAddress() {
 		// TODO Auto-generated method stub
-		String hql="from Address a inner join a.schoolDetails inner join a.countryDetails inner join a. stateDetails";
+		String hql="from Address a inner join a.schoolDetails inner join a.countryDetails inner join a. stateDetails order by a.addressId";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql); 	
 		List<Object[]> listResult = query.list();
 		return listResult;

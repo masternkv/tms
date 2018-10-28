@@ -72,6 +72,19 @@ function setSateSelectboxById(stateList) {
 	}
 }
 
+function setCitySelectboxById(cityList) {
+
+	var options = '<option value="-1">---Select---</option>';
+	if (cityList != null) {
+		$(cityList).each(
+				function(index, value) {
+					options = options + '<option value="' + value.cityId
+							+ '">' + value.cityName + '</option>';
+				});
+		$('#schoolAddressCity').html(options);
+	}
+}
+
 function getAllState() {
 	var state = $('#country').val();
 	$.ajax({
@@ -106,6 +119,28 @@ function getSchoolStateById() {
 		success : function(stateList) {
 			setSateSelectboxById(stateList);
 			console.log("SUCCESS: ", stateList);
+
+		},
+		error : function(e) {
+			$("#getResultDiv").html("<strong>Error</strong>");
+			console.log("ERROR: ", e);
+		}
+	});
+
+}
+
+function getSchoolCityById() {
+	var city = $('#schoolAddressState').val();
+	$.ajax({
+		type : "GET",
+		contentType : "application/json",
+		url : "/tms/getCity",
+		data : {
+			city : city
+		},
+		success : function(cityList) {
+			setCitySelectboxById(cityList);
+			console.log("SUCCESS: ", cityList);
 
 		},
 		error : function(e) {
@@ -174,26 +209,30 @@ $(document).ready(
 							dataType : "json",
 							success : function(data) {
 								console.log("SUCCESS: ", data);
+								$('#schoolAddressId').val(data[0][0].addressId);
 								$('#schoolAddress1').val(
 										data[0][0].addressLane1);
 								$('#schoolAddress2').val(
 										data[0][0].addressLane2);
 								$('#schoolAddressCountry').val(
 										data[0][0].countryDetails.countryId);
-								var options = '<option value="'
+								var stateoptions = '<option value="'
 										+ data[0][0].stateDetails.stateId
 										+ '">'
 										+ data[0][0].stateDetails.state_Name
 										+ '</option>';
-								$('#schoolAddressState').html(options);
-								//  $('#schoolAddressState').val(data[0][0].stateDetails.stateId);
-								/*$('#gender').val(data.gender);  
-								$('#designation').val(data.designation);  
-								$('#age').val(data.age);  
-								$('#employee_id').val(data.id);  
-								$('#insert').val("Update");  
-								$('#edit').modal('show'); */
-								$('#edit').modal('show');
+								$('#schoolAddressState').html(stateoptions);
+								var cityoptions = '<option value="'
+									+ data[0][0].cityDetails.cityId
+									+ '">'
+									+ data[0][0].cityDetails.cityName
+									+ '</option>';
+							$('#schoolAddressCity').html(cityoptions);
+							$('#schoolAddressEmail').val(data[0][0].addreesEmail);
+						    $('#schoolAddressMobNo').val(data[0][0].addressMobNo);  
+							$('#schoolAddressPhNo').val(data[0][0].addressPhoneNo);  
+						    $('#schoolAddressZipNo').val(data[0][0].addressZip);  
+							$('#edit').modal('show');
 							}
 						});
 					});

@@ -320,6 +320,9 @@
 				</div>
 				<div class="modal-body">
 					<form method="post" id="update_form">
+					   <div  class="form-group">
+							<input class="form-control" type="text" id="schoolAddressId" readonly="readonly">
+						</div>
 						<div class="form-group">
 							<input class="form-control " type="text" id="schoolAddress1"
 								placeholder="Address Lane 2">
@@ -338,20 +341,29 @@
 						</div>
 						<div class="form-group">
 							<select class="form-control" name="schoolAddressState"
-								id="schoolAddressState">
+								id="schoolAddressState" onblur="getSchoolCityById()">
 							</select>
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="text"
-								placeholder="Address Lane 1">
+							<select class="form-control" name="schoolAddressCity"
+								id="schoolAddressCity">
+							</select>
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="text"
-								placeholder="Address Lane 1">
+							<input class="form-control " type="text" id="schoolAddressEmail"
+								placeholder="Email Id">
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="text"
-								placeholder="Address Lane 1">
+							<input class="form-control " type="number" id="schoolAddressMobNo"
+								placeholder="Mobile Number">
+						</div>
+						<div class="form-group">
+							<input class="form-control " type="number" id="schoolAddressPhNo"
+								placeholder="Phone Number">
+						</div>
+						<div class="form-group">
+							<input class="form-control " type="number" id="schoolAddressZipNo"
+								placeholder="Zip Number">
 						</div>
 					</form>
 				</div>
