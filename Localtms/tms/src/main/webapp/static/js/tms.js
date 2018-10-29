@@ -192,7 +192,7 @@ $(document).ready(function() {
 $(function() {
 	$("[rel='tooltip']").tooltip();
 });
-
+//used to display the data in model popup when click on edit button.
 $(document).ready(
 		function() {
 			$(document).on(
@@ -210,6 +210,7 @@ $(document).ready(
 							success : function(data) {
 								console.log("SUCCESS: ", data);
 								$('#schoolAddressId').val(data[0][0].addressId);
+								$('#schoolId').val(data[0][0].schoolDetails.schoolId);
 								$('#schoolAddress1').val(
 										data[0][0].addressLane1);
 								$('#schoolAddress2').val(
@@ -237,3 +238,29 @@ $(document).ready(
 						});
 					});
 		});
+
+///used for edit the data by using model popup.......................
+$(document).ready(
+		function() {
+			$('#update_form').on(
+					"submit",
+					function(event) {
+						event.preventDefault();
+						var data=$('#update_form').serialize();
+						console.log("Update data",data);
+						$.ajax({
+							url : "/tms/updSchoolAddress",
+							contentType : "application/json",
+							type : "POST",
+							data : 
+								$('#update_form').serialize(),
+							
+							dataType : "json",
+							success : function(data1) {
+								console.log("SUCCESS: ", data1);
+							$('#edit').modal('hide');
+							}
+						});
+					});
+		});
+

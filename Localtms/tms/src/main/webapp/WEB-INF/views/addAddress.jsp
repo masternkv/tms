@@ -242,6 +242,7 @@
 							<thead>
 
 								<th><input type="checkbox" id="checkall" /></th>
+								<th>Address Id</th>
 								<th>School Id</th>
 								<th>Address</th>
 								<th>Email</th>
@@ -255,6 +256,7 @@
 									<tr>
 										<td><input type="checkbox" class="checkthis" /></td>
 										<td>${schoolAddress[0].addressId}</td>
+										<td>${schoolAddress[0].schoolDetails.schoolId}</td>
 										<td>${schoolAddress[0].addressLane1},${schoolAddress[0].addressLane2},${schoolAddress[0].cityDetails.cityName}
 											${schoolAddress[0].stateDetails.state_Name},${schoolAddress[0].countryDetails.counrtyName},${schoolAddress[0].addressZip}
 										</td>
@@ -321,18 +323,21 @@
 				<div class="modal-body">
 					<form method="post" id="update_form">
 					   <div  class="form-group">
-							<input class="form-control" type="text" id="schoolAddressId" readonly="readonly">
+							<input class="form-control" type="text" name="addressId" id="schoolAddressId" readonly="readonly">
+						</div>
+						<div  class="form-group">
+							<input class="form-control" type="text" name="schoolDetails.schoolId" id="schoolId" readonly="readonly">
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="text" id="schoolAddress1"
+							<input class="form-control" type="text"  name="addressLane1" id="schoolAddress1"
 								placeholder="Address Lane 2">
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="text" id="schoolAddress2"
+							<input class="form-control " type="text"  name="addressLane2" id="schoolAddress2"
 								placeholder="Address Lane 2">
 						</div>
 						<div class="form-group">
-							<select class="form-control" name="schoolAddressCountry"
+							<select class="form-control" name="countryDetails.countryId"
 								id="schoolAddressCountry" onblur="getSchoolStateById()">
 								<c:forEach var="setCountry" items="${countryList}">
 									<option value="${setCountry.countryId}">${setCountry.counrtyName}</option>
@@ -340,38 +345,45 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<select class="form-control" name="schoolAddressState"
+							<select class="form-control" name="stateDetails.stateId"
 								id="schoolAddressState" onblur="getSchoolCityById()">
 							</select>
 						</div>
 						<div class="form-group">
-							<select class="form-control" name="schoolAddressCity"
+							<select class="form-control" name="cityDetails.cityId"
 								id="schoolAddressCity">
 							</select>
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="text" id="schoolAddressEmail"
+							<input class="form-control " type="text" name="addreesEmail"  id="schoolAddressEmail"
 								placeholder="Email Id">
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="number" id="schoolAddressMobNo"
+							<input class="form-control " type="number" name="addressMobNo" id="schoolAddressMobNo"
 								placeholder="Mobile Number">
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="number" id="schoolAddressPhNo"
+							<input class="form-control " type="number" name="addressPhoneNo" id="schoolAddressPhNo"
 								placeholder="Phone Number">
 						</div>
 						<div class="form-group">
-							<input class="form-control " type="number" id="schoolAddressZipNo"
+							<input class="form-control " type="number" name="addressZip" id="schoolAddressZipNo"
 								placeholder="Zip Number">
 						</div>
-					</form>
-				</div>
-				<div class="modal-footer ">
-					<button type="button" class="btn btn-warning btn-lg"
+						
+						<div class="form-group model-footer">
+						<input type="submit" name="insert" id="insert" value="Update" class="btn btn-warning btn-lg"
+						style="width: 100%;">
+						</div>
+						
+						 
+						<!-- <div class="modal-footer ">
+					     <button type="button" class="btn btn-warning btn-lg"
 						style="width: 100%;">
 						<span class="glyphicon glyphicon-ok-sign"></span> Update
-					</button>
+					    </button>
+				        </div> -->
+					</form>
 				</div>
 			</div>
 			<!-- /.modal-content -->

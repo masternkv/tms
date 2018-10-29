@@ -1,15 +1,19 @@
 package com.tms.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tms.model.Address;
 import com.tms.model.City;
 import com.tms.model.Country;
 import com.tms.model.School;
@@ -68,6 +72,15 @@ public class SchoolRestController {
 		List<Object[]> getSchoolAddrById=addrService.getAddressById(schoolId);
 	
 		return getSchoolAddrById;
+    }
+    @RequestMapping(value="/updSchoolAddress",
+    		method=RequestMethod.PUT, 
+    		produces="application/json", consumes="application/json")
+    public void  updateSchoolAddr(@RequestBody Address addr)
+    
+    {
+    	addrService.saveAddress(addr);
+    	
     }
 	
 }
