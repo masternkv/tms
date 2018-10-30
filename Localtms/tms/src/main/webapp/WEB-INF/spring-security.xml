@@ -17,7 +17,7 @@
 		<form-login login-page="/login" username-parameter="ssoId"
 			password-parameter="password" />
 		<access-denied-handler error-page="/Access_Denied" />
-		<csrf />
+	<!-- 	<csrf /> -->
 	</http>
 
 	<authentication-manager>

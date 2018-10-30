@@ -74,7 +74,7 @@ public class SchoolRestController {
 		return getSchoolAddrById;
     }
     @RequestMapping(value="/updSchoolAddress",
-    		method=RequestMethod.PUT, 
+    		method=RequestMethod.POST, 
     		produces="application/json", consumes="application/json")
     public void  updateSchoolAddr(@RequestBody Address addr)
     
@@ -82,5 +82,15 @@ public class SchoolRestController {
     	addrService.saveAddress(addr);
     	
     }
+    
+    @RequestMapping(value="/postCheck",method=RequestMethod.POST,consumes = "application/json")
+    public @ResponseBody String  postCheck()
+    
+    {
+    	logger.info("Now in POST method");
+    	return "Check";
+    	
+    }
+	
 	
 }
