@@ -246,14 +246,35 @@ $(document).ready(
 					"submit",
 					function(event) {
 						event.preventDefault();
-						var data=$('#update_form').serialize();
-						console.log("Update data",data);
+						var formdata={
+								addressId:$("#schoolAddressId").val(),
+								schoolDetails:{
+									           schoolId:$("#schoolId").val()	
+								              },
+						        addressLane1:$("#schoolAddress1").val(),
+						        addressLane2:$("#schoolAddress2").val(),
+						        countryDetails:{
+						        	            countryId:$("#schoolAddressCountry").val()
+						                       },
+						        stateDetails:  {
+						        	            stateId:$("#schoolAddressState").val()
+							                    },
+							    cityDetails:    {
+							    	            cityId:$("#schoolAddressCity").val()
+								                 },
+							    addreesEmail:$("#schoolAddressEmail").val(),
+							    addressMobNo:$("#schoolAddressMobNo").val(),
+							    addressPhoneNo:$("#schoolAddressPhNo").val(),
+							    addressZip:$("#schoolAddressZipNo").val(),
+						}
+						console.log("Update data",formdata);
 						$.ajax({
 							url : "/tms/updSchoolAddress",
 							contentType : "application/json",
 							type : "POST",
 							data : 
-								$('#update_form').serialize(),
+								//$('#update_form').serialize(),
+								JSON.stringify(formdata),
 							
 							dataType : "json",
 							success : function(data1) {

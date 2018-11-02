@@ -73,7 +73,7 @@ public class SchoolRestController {
 	
 		return getSchoolAddrById;
     }
-    @RequestMapping(value="/updSchoolAddress",method=RequestMethod.POST,consumes="application/json")
+    @RequestMapping(value="/updSchoolAddress",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Address updateSchoolAddr(@RequestBody Address addr)
     
     {
