@@ -1,3 +1,4 @@
+
 jQuery(document).ready(function($) {
 
 	// GET REQUEST
@@ -246,6 +247,7 @@ $(document).ready(
 					"submit",
 					function(event) {
 						event.preventDefault();
+						var display= $('#update_form').serialize();
 						var formdata={
 								addressId:$("#schoolAddressId").val(),
 								schoolDetails:{
@@ -273,15 +275,58 @@ $(document).ready(
 							contentType : "application/json",
 							type : "POST",
 							data : 
-								//$('#update_form').serialize(),
+							  
 								JSON.stringify(formdata),
 							
 							dataType : "json",
 							success : function(data1) {
 								console.log("SUCCESS: ", data1);
 							$('#edit').modal('hide');
+							//$('#address_table_details').html(display);
+							location.reload(true);
 							}
 						});
 					});
 		});
 
+
+//used for delete the addresss.....
+
+//used to display the data in model popup when click on edit button.
+$(document).ready(
+		function() {
+			$(document).on(
+					'click',
+					'.delete_data',
+					function(event) {
+						
+						var schoolId = $(this).attr("id");
+						 $('#delete').modal('show');
+						$('.btn-success').click(
+								function(event) {
+									event.preventDefault();
+									console.log("Deleting the school id:"+schoolId);
+									deleteSchoolById(schoolId);
+									schoolId="";
+									
+								});
+					});
+		});
+
+function deleteSchoolById(schoolId)
+{
+	$.ajax({
+		url : "deleteSchoolAddrById",
+		type : "POST",
+		data : {
+			schoolId : schoolId
+		},
+		dataType : "text",
+		success : function(data) {
+			console.log("SUCCESS: ", data);
+			//$('#delete').modal('hide'); 
+			//location.reload(true)
+		}
+		
+	})
+}

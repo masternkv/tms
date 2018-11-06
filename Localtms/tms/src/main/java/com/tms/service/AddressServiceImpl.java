@@ -32,6 +32,12 @@ public class AddressServiceImpl implements AddressService {
 		// TODO Auto-generated method stub
 		return addrDao.getAddressById(schoolId);
 	}
+	@Override
+	@Transactional
+	public boolean deleteAddressById(Integer schoolId) {
+		// TODO Auto-generated method stub
+		return addrDao.deleteAddressById(schoolId);
+	}
 	
 
 }

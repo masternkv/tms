@@ -234,13 +234,10 @@
 
 				<div class="col-md-12">
 					<h4>Bootstrap Snipp for Datatable</h4>
-					<div class="table-responsive">
-
-
+					<div class="table-responsive" >
 						<table id="mytable" class="table table-bordred table-striped">
-
+						
 							<thead>
-
 								<th><input type="checkbox" id="checkall" /></th>
 								<th>Address Id</th>
 								<th>School Id</th>
@@ -251,6 +248,7 @@
 								<th>Edit</th>
 								<th>Delete</th>
 							</thead>
+							
 							<tbody>
 								<c:forEach var="schoolAddress" items="${allSchoolAddr}">
 									<tr>
@@ -271,9 +269,9 @@
 												</button>
 											</p></td>
 										<td><p data-placement="top" data-toggle="tooltip"
-												title="Delete" id="${schoolAddress[0].addressId}">
+												title="Delete" >
 												<button class="btn btn-danger btn-xs delete_data"
-													data-title="Delete">
+													data-title="Delete" id="${schoolAddress[0].addressId}">
 													<span class="glyphicon glyphicon-trash"></span>
 												</button>
 											</p></td>
@@ -282,6 +280,7 @@
 							</tbody>
 
 						</table>
+						
 
 						<div class="clearfix"></div>
 						<ul class="pagination pull-right">
@@ -414,10 +413,10 @@
 
 				</div>
 				<div class="modal-footer ">
-					<button type="button" class="btn btn-success">
+					<button type="button" id="delete_yes" class="btn btn-success" data-dismiss="modal">
 						<span class="glyphicon glyphicon-ok-sign"></span> Yes
 					</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">
+					<button type="button" id="delete_no" class="btn btn-default" data-dismiss="modal">
 						<span class="glyphicon glyphicon-remove"></span> No
 					</button>
 				</div>

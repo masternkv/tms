@@ -1,4 +1,5 @@
 
+
 package com.tms.dao;
 
 import java.util.List;
@@ -9,7 +10,10 @@ import java.util.List;
 
 
 
+
+
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,14 +45,27 @@ public class AddressDaoImpl implements AddressDao{
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("schoolId", schoolId);
 		 List<Object[]> addressById =query.list();
-		 for (Object[] aRow : addressById) {
+		 /*for (Object[] aRow : addressById) {
 			    Address address = (Address) aRow[0];
 			    School school = (School) aRow[1];
 			    Country country=(Country)aRow[2];
 			    System.out.println(address.getAddressLane1()+ " - " + school.getSchoolName()+" - "+country.getCountryId());
-			}
+			}*/
 		 
 		return addressById;
+	}
+	@Override
+	public boolean deleteAddressById(Integer schoolId) {
+		Session session=sessionFactory.getCurrentSession();
+		try {
+			Address addrs=(Address)session.load(Address.class,schoolId );
+			session.delete(addrs);
+			return true;
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return false;
 	}
 
 }

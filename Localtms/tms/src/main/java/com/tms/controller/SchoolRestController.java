@@ -82,15 +82,13 @@ public class SchoolRestController {
     	return addr;
     	
     }
-    
-    @RequestMapping(value="/postCheck",method=RequestMethod.POST,consumes = "application/json")
-    public @ResponseBody String  postCheck(@RequestBody City city)
-    
+    @RequestMapping(value="deleteSchoolAddrById",method=RequestMethod.POST)
+    public @ResponseBody String deleteSchoolAddrById(@RequestParam("schoolId")Integer schoolId)
     {
-    	logger.info("Now in POST method");
-    	return "PUT method";
-    	
+    	//Integer schoolId=50;
+		boolean result=addrService.deleteAddressById(schoolId);
+		//List<Object[]> getSchoolAddrById=addrService.getAddressById(schoolId);
+	
+		return "deleted success";
     }
-	
-	
 }
