@@ -49,7 +49,7 @@ public class SchoolController {
 	public ModelAndView displayAddress(ModelAndView model,
 			@ModelAttribute("address") Address addr) {
 
-		logger.info("In Display Address url");
+		logger.info("In Display Address Controller");
 		List<School> schoolList = schoolService.getAllSchool();
 		logger.info("School Detail" + schoolList.toString());
 		List<Country> countryList = countryService.getAllCountry();
