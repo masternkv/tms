@@ -292,27 +292,24 @@ $(document).ready(
 
 //used for delete the addresss.....
 
-//used to display the data in model popup when click on edit button.
 $(document).ready(
 		function() {
+			var deleteSchoolId;
 			$(document).on(
 					'click',
 					'.delete_data',
-					function(event) {
-						
-						var schoolId = $(this).attr("id");
+					function(event) {	
+						 deleteSchoolId = $(this).attr("id");
 						 $('#delete').modal('show');
-						$('.btn-success').click(
-								function(event) {
-									event.preventDefault();
-									console.log("Deleting the school id:"+schoolId);
-									deleteSchoolById(schoolId);
-									schoolId="";
-									
-								});
 					});
+            $(document).on(
+					'click',
+					'.delete_data',
+					function(event) {
+						event.preventDefault();
+						deleteSchoolById(schoolId);
+					});					
 		});
-
 function deleteSchoolById(schoolId)
 {
 	$.ajax({
@@ -324,9 +321,7 @@ function deleteSchoolById(schoolId)
 		dataType : "text",
 		success : function(data) {
 			console.log("SUCCESS: ", data);
-			//$('#delete').modal('hide'); 
-			//location.reload(true)
+		  $('#delete').modal('hide'); 
 		}
-		
 	})
 }
