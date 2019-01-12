@@ -1,4 +1,5 @@
 
+
 jQuery(document).ready(function($) {
 
 	// GET REQUEST
@@ -304,10 +305,10 @@ $(document).ready(
 					});
             $(document).on(
 					'click',
-					'.delete_data',
+					'.btn-success',
 					function(event) {
 						event.preventDefault();
-						deleteSchoolById(schoolId);
+						deleteSchoolById(deleteSchoolId);
 					});					
 		});
 function deleteSchoolById(schoolId)
