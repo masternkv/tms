@@ -284,7 +284,7 @@ $(document).ready(
 								console.log("SUCCESS: ", data1);
 							$('#edit').modal('hide');
 							//$('#address_table_details').html(display);
-							location.reload(true);
+							//location.reload(true);
 							}
 						});
 					});

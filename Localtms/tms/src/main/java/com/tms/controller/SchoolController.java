@@ -67,9 +67,13 @@ public class SchoolController {
 			@ModelAttribute("address") @Valid Address address,
 			BindingResult result,final RedirectAttributes redirectAttribuites) {
 		if (result.hasErrors()) {
+			List<Country> countryList = countryService.getAllCountry();
 			List<School> schoolList = schoolService.getAllSchool();
+			List<Object[]> allSchoolAddr= addrService.getAllSchAddress();
 			String s="success";
 			model.addObject("schoolList", schoolList);
+			model.addObject("allSchoolAddr",allSchoolAddr);
+			model.addObject("countryList", countryList);
 			model.setViewName("addAddress");
 			return model;
 		} else {

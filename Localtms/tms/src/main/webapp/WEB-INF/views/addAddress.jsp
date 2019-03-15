@@ -33,14 +33,14 @@
 </style>
 <link href="<c:url value='static/css/bootstrap.css'/>" rel="stylesheet"></link>
 <link href="<c:url value='static/css/tms.css'/>" rel="stylesheet"></link>
-<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"
-	type="text/javascript"></script>
-<script
-	src="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>"
-	type="text/javascript"></script>
+<script src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"type="text/javascript"></script>
+<script src="<c:url value="/static/js/bootstrap.js"/>"type="text/javascript"></script>
+<%-- <script src="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>"type="text/javascript"></script> --%>
+	
 <script src="<c:url value="/static/js/tms.js"/>" type="text/javascript"></script>
 
 </head>
+<body class="img-responsive">
 <c:url var="addAction" value="/saveSchAddr"></c:url>
 <div class="container">
 	<ul class="nav nav-tabs">

@@ -3,9 +3,21 @@ package com.tms.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sun.scenario.effect.impl.prism.PrCropPeer;
+import com.tms.exceptionHandler.MyBindingException;
 import com.tms.model.Address;
 import com.tms.model.City;
 import com.tms.model.Country;
@@ -38,6 +52,8 @@ public class SchoolRestController {
 	private AddressService addrService;
 	@Autowired
 	private CityService cityService;
+	@Autowired
+	private ReloadableResourceBundleMessageSource messageSource ;
 	
 	@RequestMapping(value="/getCountry",method=RequestMethod.GET)
 	public @ResponseBody List<Country> getAllCountry()
@@ -74,12 +90,23 @@ public class SchoolRestController {
 		return getSchoolAddrById;
     }
     @RequestMapping(value="/updSchoolAddress",method=RequestMethod.POST,consumes=MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Address updateSchoolAddr(@RequestBody Address addr)
+    public ResponseEntity<?> updateSchoolAddr(@Valid @RequestBody Address addr,BindingResult error)
     
     {
-    	addrService.saveAddress(addr);
+    	HttpHeaders responseUpdate=new HttpHeaders();
+    	//error.getFieldErrors()
     	
-    	return addr;
+    	if(error.hasErrors())
+    	{
+    		throw new MyBindingException(error);
+    	}
+    	else
+    	{
+    		addrService.saveAddress(addr);
+    		return new ResponseEntity<>(addr,responseUpdate,HttpStatus.CREATED);
+    	}
+    	/*addrService.saveAddress(addr);
+    	return new ResponseEntity<>(addr,responseUpdate,HttpStatus.CREATED);*/
     	
     }
     @RequestMapping(value="deleteSchoolAddrById",method=RequestMethod.POST)

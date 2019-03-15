@@ -33,6 +33,19 @@
         <property name="basename" value="/WEB-INF/message" />
     </bean>
     
+   <!--  <bean id="messageSource"
+class="org.springframework.context.support.ResourceBundleMessageSource">
+     <property name="basename">
+    <value>/WEB-INF/message</value>
+    </property>
+    </bean> -->
+    
+    <bean id="localeResolver"
+class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+<property name="defaultLocale">
+    <value>en</value>
+</property>
+</bean>
     
      <bean id="hibernate4AnnotatedSessionFactory"
         class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
